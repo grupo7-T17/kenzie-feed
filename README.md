@@ -1,4 +1,4 @@
-# 🏁 Entrega KenzieFeed
+# 🏁 Entrega KenzieFeed - DEVELOP
 
 ### date Período do Projeto Módulo 3 - Semana 7
 ### iphone Mobile First = True
