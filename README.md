@@ -15,7 +15,7 @@
 </div>
 
 
-## Participantes
+## Participantes:
 
 <ul>
   <li>Matheus Gonzaga</li>
@@ -27,7 +27,7 @@
 ## 
 
 ##### O principal objetivo é colocar em prática tudo que foi aprendido durante o Módulo 3 do curso da Kenzie Academy Brasil, juntando todas as semanas desde o início do módulo.
-##### Isso inclui
+##### Isso inclui:
 
 <ul>
 <li>Utilização de Props, Children e métodos imutáveis;</li>
@@ -36,10 +36,9 @@
 <li>E mais...</li>
 </ul>
 
-## Algumas das bibliotecas e frameworks utilizados
+## Algumas das Linguagens, bibliotecas e frameworks utilizados
 
 <div>
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="javascript-icon">
     <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript">
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react-icon">
     <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="react-router-icon">
