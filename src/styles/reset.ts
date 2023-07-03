@@ -30,7 +30,6 @@ export const ResetCss = createGlobalStyle`
   }
   body {
     line-height: 1;
-    background-color: var(--color-grey-4);
   }
   ol, ul, li {
     list-style: none;
