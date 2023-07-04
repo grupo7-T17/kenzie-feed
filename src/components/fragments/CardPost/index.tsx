@@ -22,13 +22,13 @@ export const CardPost = ({ img, author, title }: ICardPostProps) => {
       <StyledImg src={img} alt='Imagem' />
       <StyledDivBottom>
         <StyledParagraph fontStyle='sm'>Por: {author}</StyledParagraph>
-        <StyledTitleFour fontStyle='m-post'>{title}</StyledTitleFour>
-        <StyledGapLink>
+        <StyledTitleFour fontStyle='sm'>{title}</StyledTitleFour>
+      </StyledDivBottom>
+      <StyledGapLink>
           <StyledParagraph fontStyle='sm'>
             <StyledLink to='/'>Leia Mais</StyledLink>
           </StyledParagraph>
         </StyledGapLink>
-      </StyledDivBottom>
     </StyledLiCardPost>
   );
 };

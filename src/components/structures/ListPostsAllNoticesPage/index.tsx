@@ -7,14 +7,11 @@ import {
   HeaderPostsHomepage,
 } from './style';
 
-export const ListPosts = () => {
+export const ListAllPosts = () => {
   return (
     <ListPostsHomepage>
       <HeaderPostsHomepage>
-        <StyledTitleOne fontStyle='md'>Últimas Notícias</StyledTitleOne>
-        <StyledButton buttonType='primary' buttonSize='sm-min'>
-          Ver tudo
-        </StyledButton>
+        <StyledTitleOne fontStyle='md'>Todas as Notícias</StyledTitleOne>
       </HeaderPostsHomepage>
       <UlPostsHomepage>
         <CardPost

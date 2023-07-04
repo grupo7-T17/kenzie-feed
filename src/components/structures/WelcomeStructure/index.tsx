@@ -10,7 +10,7 @@ export const WelcomeStructure = () => {
   return (
     <WelcomeContainer>
       <StyledLabel>KENZIE FEED</StyledLabel>
-      <StyledTitleOne fontStyle='m-md'>
+      <StyledTitleOne fontStyle='md'>
         Seja muito bem vindo ao KenzieFeed
       </StyledTitleOne>
       <StyledParagraph fontStyle='sm'>

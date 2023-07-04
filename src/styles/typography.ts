@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-interface iSettingsTitle {
-  fontStyle: 'lg' | 'md' | 'sm' | 'm-lg' | 'm-md' | 'post' | 'm-post';
+export interface iSettingsTitle {
+  fontStyle: 'lg' | 'md' | 'sm' | 'post';
 }
 
 const defaultSettingsTitle = css`
@@ -14,44 +14,26 @@ const defaultSettingsTitle = css`
     switch (fontStyle) {
       case 'lg':
         return css`
-          font-size: var(--font-size-10);
-          line-height: var(--line-height-12);
+          font-size: clamp(var(--font-size-5), var(--font-size-10), 6vw);
+          line-height: clamp(var(--line-height-7), var(--line-height-12), 7.2vw);
         `;
 
       case 'md':
         return css`
-          font-size: var(--font-size-9);
-          line-height: var(--line-height-11);
+          font-size: clamp(var(--font-size-7), var(--font-size-9), 5.2vw);
+          line-height: clamp(var(--line-height-7), var(--line-height-11), 6.24vw);
         `;
 
       case 'sm':
         return css`
-          font-size: var(--font-size-4);
-          line-height: var(--line-height-4);
+          font-size: clamp(var(--font-size-4), var(--font-size-4), 2.6vw);
+          line-height: clamp(var(--line-height-4), var(--line-height-4), 3.12vw);
         `;
 
       case 'post':
         return css`
-          font-size: var(--font-size-8);
-          line-height: var(--line-height-10);
-        `;
-
-      case 'm-lg':
-        return css`
-          font-size: var(--font-size-7);
-          line-height: var(--line-height-9);
-        `;
-
-      case 'm-md':
-        return css`
-          font-size: var(--font-size-6);
-          line-height: var(--line-height-8);
-        `;
-
-      case 'm-post':
-        return css`
-          font-size: var(--font-size-5);
-          line-height: var(--line-height-7);
+          font-size: clamp(var(--font-size-3), var(--font-size-8), 4.2vw);
+          line-height: clamp(var(--line-height-4), var(--line-height-10), 5.04vw);
         `;
     }
   }}
@@ -79,8 +61,8 @@ const defaultSettingsParagraph = css`
   color: var(--color-black);
 `;
 
-interface iSettingsParagraph {
-  fontStyle: 'lg' | 'sm' | 'm-md';
+export interface iSettingsParagraph {
+  fontStyle: 'lg' | 'sm';
 }
 
 export const StyledParagraph = styled.p`
@@ -90,20 +72,14 @@ export const StyledParagraph = styled.p`
     switch (fontStyle) {
       case 'lg':
         return css`
-          font-size: var(--font-size-2);
-          line-height: var(--line-height-7);
+          font-size: clamp(var(--font-size-0), var(--font-size-2), 2.6vw);
+          line-height: clamp(var(--line-height-0), var(--line-height-7), 3.12vw);
         `;
 
       case 'sm':
         return css`
-          font-size: var(--font-size-0);
-          line-height: var(--line-height-0);
-        `;
-
-      case 'm-md':
-        return css`
-          font-size: var(--font-size-2);
-          line-height: var(--line-height-6);
+          font-size: clamp(var(--font-size-1), var(--font-size-0), 1.3vw);
+          line-height: clamp(var(--line-height-2), var(--line-height-0), 1.56vw);
         `;
     }
   }}

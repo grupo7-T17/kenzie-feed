@@ -73,8 +73,8 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
 
       case 'sm-min':
         return css`
-          height: 2.8125rem;
-          padding: 0 1rem;
+          height: 2.5rem;
+          padding: 0 1.5625rem;
           width: max-content;
           font-size: var(--font-size-0);
           line-height: var(--line-height-0);
