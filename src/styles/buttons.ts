@@ -38,7 +38,8 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
       case 'lg-min':
         return css`
           height: 4.0625rem;
-          padding: 0 1.5rem;
+          padding: 0 3.5rem;
+          width: max-content;
           font-size: var(--font-size-2);
           line-height: var(--line-height-1);
         `;
@@ -47,7 +48,7 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
         return css`
           width: 100%;
           height: 4.0625rem;
-          padding: 0 1.5rem;
+          padding: 0 3.5rem;
           font-size: var(--font-size-2);
           line-height: var(--line-height-1);
         `;
@@ -55,7 +56,8 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
       case 'md-min':
         return css`
           height: 3.4375rem;
-          padding: 0 1.25rem;
+          padding: 0 2.25rem;
+          width: max-content;
           font-size: var(--font-size-1);
           line-height: var(--line-height-0);
         `;
@@ -64,7 +66,7 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
         return css`
           width: 100%;
           height: 3.4375rem;
-          padding: 0 1.25rem;
+          padding: 0 2.25rem;
           font-size: var(--font-size-1);
           line-height: var(--line-height-0);
         `;
@@ -73,6 +75,7 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
         return css`
           height: 2.8125rem;
           padding: 0 1rem;
+          width: max-content;
           font-size: var(--font-size-0);
           line-height: var(--line-height-0);
         `;
@@ -93,6 +96,6 @@ export const StyledButton = styled.button`
   ${ButtonDefault}
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledButtonLink = styled(Link)`
   ${ButtonDefault}
 `;
