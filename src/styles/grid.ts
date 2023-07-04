@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const StyledContainerHeader = styled.header`
   margin: auto;
   width: 100%;
-  max-width: 76.875rem;
+  max-width: 1000px;
   padding: 0.875rem 0rem;
 `;
 
 export const StyledContainerMain = styled.main`
   margin: 0 auto;
   width: 100%;
-  max-width: 76.875rem;
+  max-width: 1000px;
   padding: 0rem 1.125rem 1rem;
 `;
 
