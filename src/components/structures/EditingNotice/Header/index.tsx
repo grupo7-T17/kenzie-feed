@@ -1,6 +1,6 @@
 import LeftArrowIcon from '../../../../../src/assets/icons/left-arrow.svg'
-import { StyledButtonLink } from "../../../styles/buttons";
-import { StyledTitleOne, StyledParagraph } from "../../../styles/typography";
+import { StyledButtonLink } from "../../../../styles/buttons";
+import { StyledTitleOne, StyledParagraph } from "../../../../styles/typography";
 import { StyledEditingHeaderContainer } from "./style";
 
 export const EditingNoticeHeader = () => {
