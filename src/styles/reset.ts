@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const ResetCss = createGlobalStyle`
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -13,7 +14,7 @@ export const ResetCss = createGlobalStyle`
   article, aside, canvas, details, embed, 
   figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
-  time, mark, audio, video, button, input {
+  time, mark, audio, video, button, input, main {
     margin: 0;
     padding: 0;
     border: 0;

@@ -3,16 +3,16 @@ import { ResetCss } from './styles/reset';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { HomePage } from './pages/HomePage';
-// import { HomePage } from './pages/HomePage';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <ResetCss />
       <GlobalStyles />
-      <ToastContainer/>
-      <HomePage/>
-    </>
+      <ToastContainer />
+      <HomePage />
+    </BrowserRouter>
   );
 };
 

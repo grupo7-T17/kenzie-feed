@@ -4,7 +4,7 @@ export const StyledContainerHeader = styled.header`
   margin: auto;
   width: 100%;
   max-width: 76.875rem;
-  padding: 0.875rem 0.75rem 0rem;
+  padding: 0.875rem 0rem;
 `;
 
 export const StyledContainerMain = styled.main`
