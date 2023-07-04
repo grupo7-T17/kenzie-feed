@@ -3,8 +3,9 @@ import { ResetCss } from './styles/reset';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { HomePage } from './pages/HomePage';
+import { AllNoticesPage } from './pages/AllNoticesPage';
 import { BrowserRouter } from 'react-router-dom';
-// import { AllNoticesPage } from './pages/AllNoticesPage';
+import { FocusNoticePage } from './pages/FocusNoticePage';
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
       <ResetCss />
       <GlobalStyles />
       <ToastContainer />
-      <HomePage />
+      <HomePage/>
+      <AllNoticesPage />
+      <FocusNoticePage/>
     </BrowserRouter>
   );
 };
