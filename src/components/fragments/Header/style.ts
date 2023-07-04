@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
     flex-direction: row;
     justify-content: space-between;
     height: 2.375rem;
+    max-width: 76.75rem;
 `;
 
 export const StyledIcon = styled.img`

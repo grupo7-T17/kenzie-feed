@@ -1,15 +1,19 @@
-import { Header } from "../../components/fragments/Header"
-import { StyledContainerHeader, StyledContainerMain } from "../../styles/grid"
+import { Header } from '../../components/fragments/Header';
+import { ListPosts } from '../../components/structures/ListPostsHomepage';
+import { WelcomeStructure } from '../../components/structures/WelcomeStructure';
+import { StyledContainerHeader, StyledContainerMain } from '../../styles/grid';
+import { HomePageContainer } from './style';
 
 export const HomePage = () => {
-    return (
-        <>
-            <StyledContainerHeader>
-                <Header/>
-            </StyledContainerHeader>
-            <StyledContainerMain>
-                
-            </StyledContainerMain>
-        </>
-    )
-}   
+  return (
+    <StyledContainerMain>
+      <HomePageContainer>
+        <StyledContainerHeader>
+          <Header />
+        </StyledContainerHeader>
+        <WelcomeStructure />
+        <ListPosts />
+      </HomePageContainer>
+    </StyledContainerMain>
+  );
+};
