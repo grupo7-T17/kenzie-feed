@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <StyledIcon src={Logo} alt='Imagem' />
-      <StyledButton buttonType='primary' buttonSize='md-max'>Acessar</StyledButton>
+      <StyledButton buttonType='primary' buttonSize='sm-min'>Acessar</StyledButton>
     </StyledHeader>
   );
 };
