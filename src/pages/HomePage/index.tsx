@@ -1,3 +1,4 @@
+import { Footer } from '../../components/fragments/Footer';
 import { Header } from '../../components/fragments/Header';
 import { ListPosts } from '../../components/structures/ListPostsHomepage';
 import { WelcomeStructure } from '../../components/structures/WelcomeStructure';
@@ -13,6 +14,7 @@ export const HomePage = () => {
         </StyledContainerHeader>
         <WelcomeStructure />
         <ListPosts />
+        <Footer/>
       </HomePageContainer>
     </StyledContainerMain>
   );
