@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-interface iInputSize {
+export interface iInputSize {
   inputSize: 'md-min' | 'md-max' | 'lg-min' | 'lg-max';
 }
 
-interface iInputStyle {
+export interface iInputStyle {
   inputStyle: 'default' | 'borderless';
 }
 
@@ -38,6 +38,8 @@ const InputSettings = css<iInputSize & iInputStyle>`
         return css`
           font-size: var(--font-size-3);
           line-height: var(--line-height-3);
+          width: 100%;
+          max-width: 23.125rem;
 
           &::placeholder {
             color: var(--color-input-default);
@@ -62,6 +64,8 @@ const InputSettings = css<iInputSize & iInputStyle>`
         return css`
           font-size: var(--font-size-4);
           line-height: var(--line-height-3);
+          width: 100%;
+          max-width: 23.125rem;
 
           &::placeholder {
             color: var(--color-input-default);

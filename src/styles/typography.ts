@@ -1,17 +1,14 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-
-const defaultSettingsTitle = css`
-  font-family: var(--font-family);
-  font-weight: var(--font-weight-0);
-  color: var(--color-black);
-`;
 
 interface iSettingsTitle {
   fontStyle: 'lg' | 'md' | 'sm' | 'm-lg' | 'm-md' | 'post' | 'm-post';
 }
 
-export const StyledTitle = styled.h1`
-  ${defaultSettingsTitle}
+const defaultSettingsTitle = css`
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-0);
+  color: var(--color-black);
 
   ${({ fontStyle }: iSettingsTitle) => {
     switch (fontStyle) {
@@ -60,6 +57,22 @@ export const StyledTitle = styled.h1`
   }}
 `;
 
+export const StyledTitleOne = styled.h1`
+  ${defaultSettingsTitle}
+`;
+
+export const StyledTitleTwo = styled.h2`
+  ${defaultSettingsTitle}
+`;
+
+export const StyledTitleThree = styled.h3`
+  ${defaultSettingsTitle}
+`;
+
+export const StyledTitleFour = styled.h4`
+  ${defaultSettingsTitle}
+`;
+
 const defaultSettingsParagraph = css`
   font-family: var(--font-family-secondary);
   font-weight: var(--font-weight-0);
@@ -99,12 +112,12 @@ export const StyledParagraph = styled.p`
 export const StyledLabel = styled.label`
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-0);
-  font-weight: var(--font-weight-0);
+  font-weight: var(--font-weight-1);
   line-height: var(--line-height-0);
   color: var(--color-black);
 `;
 
-export const StyledLink = styled.label`
+export const StyledLink = styled(Link)`
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-0);
