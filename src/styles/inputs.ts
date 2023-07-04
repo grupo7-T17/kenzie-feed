@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-interface iInputSize {
+export interface iInputSize {
   inputSize: 'md-min' | 'md-max' | 'lg-min' | 'lg-max';
 }
 
-interface iInputStyle {
+export interface iInputStyle {
   inputStyle: 'default' | 'borderless';
 }
 
