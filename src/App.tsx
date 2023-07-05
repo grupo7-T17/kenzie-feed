@@ -2,9 +2,9 @@ import { GlobalStyles } from './styles/globalStyles';
 import { ResetCss } from './styles/reset';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { BrowserRouter } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { AllNoticesPage } from './pages/AllNoticesPage';
-import { BrowserRouter } from 'react-router-dom';
 import { FocusNoticePage } from './pages/FocusNoticePage';
 
 const App = () => {
@@ -14,8 +14,8 @@ const App = () => {
       <GlobalStyles />
       <ToastContainer />
       <HomePage/>
-      <AllNoticesPage />
-      <FocusNoticePage/>
+      {/* <AllNoticesPage /> */}
+      {/* <FocusNoticePage/> */}
     </BrowserRouter>
   );
 };
