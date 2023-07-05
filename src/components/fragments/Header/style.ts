@@ -9,6 +9,26 @@ export const StyledHeader = styled.header`
   max-width: 64rem;
 `;
 
-export const StyledIcon = styled.img`
+export const StyledLogo = styled.img`
   width: 4.1875rem;
+`;
+
+export const StyledDivIconButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    p {
+      display: none;
+    }
+
+    button {
+      padding: 0px 10px;
+    }
+  }
+`;
+
+export const QuitButton = styled.img`
+  width: 1.5rem;
 `;

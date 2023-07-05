@@ -1,26 +1,45 @@
-import { StyledHeader, StyledIcon } from './style';
+import {
+  StyledHeader,
+  StyledLogo,
+  StyledDivIconButton,
+  QuitButton,
+} from './style';
 import { StyledButton } from '../../../styles/buttons';
+import { IconUser } from '../IconUser';
 import Logo from '../../../assets/logo.svg';
-import { LoggoutArea } from '../LoggoutArea';
-import { StyledContainerHeader } from '../../../styles/grid';
+import Quit from '../../../assets/icons/quit.svg';
+import { StyledLink } from '../../../styles/typography';
 
-interface iUserLogged {
+interface iHeaderProps {
+  buttonVisible?: boolean;
   userLogged?: boolean;
 }
 
-export const Header = ({ userLogged }: iUserLogged) => {
+export const Header = ({
+  userLogged = true,
+  buttonVisible = true,
+}: iHeaderProps) => {
   return (
-    <StyledContainerHeader>
-      <StyledHeader>
-        <StyledIcon src={Logo} alt='Imagem' />
-        {userLogged ? (
-          <LoggoutArea />
+    <StyledHeader>
+      <StyledLogo src={Logo} alt='Logo da Kenzie Feed' />
+
+      {buttonVisible ? (
+        userLogged ? (
+          <StyledDivIconButton>
+            <IconUser letter='A' />
+            <StyledButton buttonType='outline' buttonSize='sm-min'>
+              Dashboard
+            </StyledButton>
+            <QuitButton src={Quit} />
+          </StyledDivIconButton>
         ) : (
-          <StyledButton buttonType='primary' buttonSize='sm-min'>
-            Acessar
-          </StyledButton>
-        )}
-      </StyledHeader>
-    </StyledContainerHeader>
+          <StyledLink to='/login'>
+            <StyledButton buttonType='primary' buttonSize='sm-min'>
+              Acessar
+            </StyledButton>
+          </StyledLink>
+        )
+      ) : null}
+    </StyledHeader>
   );
 };
