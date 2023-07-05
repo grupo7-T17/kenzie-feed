@@ -4,7 +4,7 @@ export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 2.375rem;
+  padding: 0.375rem 0rem;
   width: 100%;
   max-width: 64rem;
 `;
@@ -17,7 +17,8 @@ export const StyledDivIconButton = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
-
+  align-items: center;
+  
   @media (max-width: 768px) {
     p {
       display: none;
@@ -31,4 +32,5 @@ export const StyledDivIconButton = styled.div`
 
 export const QuitButton = styled.img`
   width: 1.5rem;
+  cursor: pointer;
 `;

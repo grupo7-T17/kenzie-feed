@@ -94,6 +94,10 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
 
 export const StyledButton = styled.button`
   ${ButtonDefault}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledButtonLink = styled(Link)`
@@ -101,4 +105,5 @@ export const StyledButtonLink = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 `;

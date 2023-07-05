@@ -4,7 +4,7 @@ import {
   StyledDivIconButton,
   QuitButton,
 } from './style';
-import { StyledButton } from '../../../styles/buttons';
+import { StyledButton, StyledButtonLink } from '../../../styles/buttons';
 import { IconUser } from '../IconUser';
 import Logo from '../../../assets/logo.svg';
 import Quit from '../../../assets/icons/quit.svg';
@@ -24,23 +24,31 @@ export const Header = ({
       <StyledLink to='/'>
         <StyledLogo src={Logo} alt='Logo da Kenzie Feed' />
       </StyledLink>
-      {buttonVisible ? (
-        userLogged ? (
-          <StyledDivIconButton>
-            <IconUser letter='A' />
+      {userLogged ? (
+        <StyledDivIconButton>
+          <IconUser letter='A' />
+          {buttonVisible ? (
             <StyledButton buttonType='outline' buttonSize='sm-min'>
               Dashboard
             </StyledButton>
-            <QuitButton src={Quit} />
-          </StyledDivIconButton>
-        ) : (
+          ) : null}
           <StyledLink to='/login'>
-            <StyledButton buttonType='primary' buttonSize='sm-min'>
-              Acessar
-            </StyledButton>
+            <QuitButton src={Quit} />
           </StyledLink>
-        )
-      ) : null}
+        </StyledDivIconButton>
+      ) : (
+        <>
+          {buttonVisible ? (
+            <StyledButtonLink
+              to='/login'
+              buttonType='primary'
+              buttonSize='sm-min'
+            >
+              Acessar
+            </StyledButtonLink>
+          ) : null}
+        </>
+      )}
     </StyledHeader>
   );
 };
