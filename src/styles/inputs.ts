@@ -95,4 +95,9 @@ export const StyledInput = styled.input`
 
 export const StyledTextarea = styled.textarea`
   ${InputSettings}
+  height: 26.875rem;
+
+  @media (max-width: 768px) {
+    height: 14.375rem;
+  }
 `;

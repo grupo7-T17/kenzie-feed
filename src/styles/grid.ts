@@ -3,22 +3,32 @@ import styled from 'styled-components';
 export const StyledContainerHeader = styled.header`
   margin: auto;
   width: 100%;
-  max-width: 1000px;
+  max-width: 64rem;
   padding: 0.875rem 0rem;
 `;
 
 export const StyledContainerMain = styled.main`
   margin: 0 auto;
   width: 100%;
-  max-width: 1000px;
+  max-width: 64rem;
   padding: 0rem 1.125rem 1rem;
 `;
 
-export const StyledContainerEdit = styled.main`
-  margin: 0 auto;
+export const StyledContainerEditHeader = styled.header`
+  margin: auto;
+  width: 100%;
+  max-width: 57.5rem;
+  padding: 0.875rem 1.25rem;
+`;
+
+export const StyledContainerEditMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin: 4.25rem auto;
   width: 100%;
   max-width: 57.5rem;
   padding: 0rem 1.125rem 1rem;
+  gap: 1.625rem;
 `;
 
 export const StyledContainerLogin = styled.main`

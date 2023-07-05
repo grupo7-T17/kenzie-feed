@@ -1,7 +1,7 @@
-import { StyledButton } from "../../../../styles/buttons";
-import { InputLabel } from "../../../fragments/InputLabel";
-import { TextareaLabel } from "../../../fragments/TextareaLabel";
-import { StyledEditingFormContainer } from "./style";
+import { StyledButton } from '../../../../styles/buttons';
+import { InputLabel } from '../../../fragments/InputLabel';
+import { TextareaLabel } from '../../../fragments/TextareaLabel';
+import { StyledEditingFormContainer } from './style';
 
 export const EditingNoticeForm = () => {
   return (
@@ -14,7 +14,6 @@ export const EditingNoticeForm = () => {
       />
       <TextareaLabel
         label='Conteúdo'
-        rows={11}
         inputSize='md-max'
         inputStyle='borderless'
       />

@@ -7,10 +7,19 @@ export const StyledEditingHeaderContainer = styled.div`
   width: 100%;
   max-width: 57.5rem;
 
+  h1 {
+    font-size: clamp(var(--font-size-4), 8vw, var(--font-size-8));
+  }
+
+  a {
+    padding: 0rem 0.625rem;
+  }
+
   figure {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
     gap: 0.625rem;
   }
 
