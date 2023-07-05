@@ -13,6 +13,7 @@ export const StyledDivCardPost = styled.div`
     .focusNoticeParagraph {
         display: flex;
         text-align: start;
+        text-align: justify;
     }
 `;
 

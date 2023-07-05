@@ -8,20 +8,23 @@ import { StyledButton } from '../../../styles/buttons';
 import { IconUser } from '../IconUser';
 import Logo from '../../../assets/logo.svg';
 import Quit from '../../../assets/icons/quit.svg';
-
-const user = false;
+import { StyledLink } from '../../../styles/typography';
 
 interface iHeaderProps {
-  button?: boolean;
+  buttonVisible?: boolean;
+  userLogged?: boolean;
 }
 
-export const Header = ({ button }: iHeaderProps) => {
+export const Header = ({
+  userLogged = false,
+  buttonVisible = true,
+}: iHeaderProps) => {
   return (
     <StyledHeader>
       <StyledLogo src={Logo} alt='Logo da Kenzie Feed' />
 
-      {button ? (
-        user ? (
+      {buttonVisible ? (
+        userLogged ? (
           <StyledDivIconButton>
             <IconUser letter='A' />
             <StyledButton buttonType='outline' buttonSize='sm-min'>
@@ -30,9 +33,11 @@ export const Header = ({ button }: iHeaderProps) => {
             <QuitButton src={Quit} />
           </StyledDivIconButton>
         ) : (
-          <StyledButton buttonType='primary' buttonSize='sm-min'>
-            Acessar
-          </StyledButton>
+          <StyledLink to='/login'>
+            <StyledButton buttonType='primary' buttonSize='sm-min'>
+              Acessar
+            </StyledButton>
+          </StyledLink>
         )
       ) : null}
     </StyledHeader>

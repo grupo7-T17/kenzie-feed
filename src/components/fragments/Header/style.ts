@@ -5,7 +5,8 @@ export const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: space-between;
   height: 2.375rem;
-  max-width: 76.75rem;
+  width: 100%;
+  max-width: 64rem;
 `;
 
 export const StyledLogo = styled.img`
