@@ -16,7 +16,7 @@ interface iHeaderProps {
 }
 
 export const Header = ({
-  userLogged = false,
+  userLogged = true,
   buttonVisible = true,
 }: iHeaderProps) => {
   return (

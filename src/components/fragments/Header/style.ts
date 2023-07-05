@@ -17,6 +17,16 @@ export const StyledDivIconButton = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
+
+  @media (max-width: 768px) {
+    p {
+      display: none;
+    }
+
+    button {
+      padding: 0px 10px;
+    }
+  }
 `;
 
 export const QuitButton = styled.img`
