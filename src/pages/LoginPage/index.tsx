@@ -17,7 +17,7 @@ export const LoginPage = () => {
   return (
     <StyledContainerMain>
       <StyledContainerHeader>
-        <Header button={false}/>
+        <Header buttonVisible={false}/>
       </StyledContainerHeader>
       <StyledDivLoginPage>
         <StyledContainerLoginImage>
