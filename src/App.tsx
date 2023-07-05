@@ -6,11 +6,14 @@ import { ToastContainer } from 'react-toastify';
 import { RoutesMain } from './routes/RoutesMain';
 // import { AllNoticesPage } from './pages/AllNoticesPage';
 // import { FocusNoticePage } from './pages/FocusNoticePage';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const App = () => {
   return (
     <>
-      <RoutesMain/>
+      <RoutesMain />
       <ResetCss />
       <GlobalStyles />
       <ToastContainer />
