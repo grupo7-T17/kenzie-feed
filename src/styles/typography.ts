@@ -72,13 +72,13 @@ export const StyledParagraph = styled.p`
     switch (fontStyle) {
       case 'lg':
         return css`
-          font-size: clamp(var(--font-size-0), var(--font-size-2), 2.6vw);
+          font-size: clamp(var(--font-size-1), var(--font-size-2), 2.6vw);
           line-height: clamp(var(--line-height-0), var(--line-height-7), 3.12vw);
         `;
 
       case 'sm':
         return css`
-          font-size: clamp(var(--font-size-1), var(--font-size-0), 1.3vw);
+          font-size: clamp(var(--font-size-0), var(--font-size-1), 1.3vw);
           line-height: clamp(var(--line-height-2), var(--line-height-0), 1.56vw);
         `;
     }
