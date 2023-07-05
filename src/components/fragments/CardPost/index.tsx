@@ -26,7 +26,7 @@ export const CardPost = ({ img, author, title }: iCardPostProps) => {
       </StyledDivBottom>
       <StyledGapLink>
           <StyledParagraph fontStyle='sm'>
-            <StyledLink to='/'>Leia Mais</StyledLink>
+            <StyledLink to='/notice'>Leia Mais</StyledLink>
           </StyledParagraph>
         </StyledGapLink>
     </StyledLiCardPost>

@@ -6,6 +6,6 @@ export const StyledFooter = styled.footer`
   align-items: center;
   text-align: center;
   width: 100%;
-  padding: clamp(3.75rem, 56.31vw, 2.5rem) 0px;
+  padding: clamp(3.75rem, 56.31vw, 2.5rem) 58px;
   background-color: var(--color-white);
 `;

@@ -98,4 +98,7 @@ export const StyledButton = styled.button`
 
 export const StyledButtonLink = styled(Link)`
   ${ButtonDefault}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
