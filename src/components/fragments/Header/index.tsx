@@ -16,13 +16,14 @@ interface iHeaderProps {
 }
 
 export const Header = ({
-  userLogged = true,
+  userLogged = false,
   buttonVisible = true,
 }: iHeaderProps) => {
   return (
     <StyledHeader>
-      <StyledLogo src={Logo} alt='Logo da Kenzie Feed' />
-
+      <StyledLink to='/'>
+        <StyledLogo src={Logo} alt='Logo da Kenzie Feed' />
+      </StyledLink>
       {buttonVisible ? (
         userLogged ? (
           <StyledDivIconButton>

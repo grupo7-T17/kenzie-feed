@@ -8,7 +8,7 @@ import {
 } from '../../styles/grid';
 import { StyledEditContainer } from './style';
 
-export const EditingNoticePage = () => {
+export const EditPage = () => {
   return (
     <>
       <StyledContainerEditHeader>

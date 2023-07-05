@@ -1,4 +1,4 @@
-import { StyledButton } from '../../../styles/buttons';
+import { StyledButtonLink } from '../../../styles/buttons';
 import { StyledTitleOne } from '../../../styles/typography';
 import { CardPost } from '../../fragments/CardPost';
 import {
@@ -12,9 +12,14 @@ export const ListPosts = () => {
     <ListPostsHomepage>
       <HeaderPostsHomepage>
         <StyledTitleOne fontStyle='md'>Últimas Notícias</StyledTitleOne>
-        <StyledButton buttonType='primary' buttonSize='sm-min'>
+
+        <StyledButtonLink
+          buttonType='primary'
+          buttonSize='sm-min'
+          to='/allnotices'
+        >
           Ver tudo
-        </StyledButton>
+        </StyledButtonLink>
       </HeaderPostsHomepage>
       <UlPostsHomepage>
         <CardPost

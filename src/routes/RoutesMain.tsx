@@ -17,7 +17,7 @@ export const RoutesMain = () => {
             <Route path="/notice" element={<FocusNoticePage/>}/>
             <Route path="/edit" element={<EditPage/>}/>
             <Route path="/dashboard" element={<DashboardPage/>}/>
-            <Route path="/allnotice" element={<AllNoticesPage/>}/>
+            <Route path="/allnotices" element={<AllNoticesPage/>}/>
         </Routes>
     )
 }
