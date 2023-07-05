@@ -24,9 +24,19 @@ export const StyledContainerEditHeader = styled.header`
 export const StyledContainerEditMain = styled.main`
   display: flex;
   flex-direction: column;
-  margin: 4.25rem auto;
+  margin: 4.25rem auto 0rem;
   width: 100%;
   max-width: 57.5rem;
+  padding: 0rem 1.125rem 1rem;
+  gap: 1.625rem;
+`;
+
+export const StyledContainerDashboardMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin: 4.25rem auto 0rem;
+  width: 100%;
+  max-width: 64rem;
   padding: 0rem 1.125rem 1rem;
   gap: 1.625rem;
 `;
