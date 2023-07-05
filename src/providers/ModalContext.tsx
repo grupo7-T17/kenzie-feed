@@ -31,7 +31,7 @@ export interface iModalContext {
 export const ModalContext = createContext({} as iModalContext);
 
 export const ModalProvider = ({ children }: iProviderModalProps) => {
-  const [modalNewPost, isModalNewPostOpen] = useState(true);
+  const [modalNewPost, isModalNewPostOpen] = useState(false);
 
   const handleOpenModal = () => {
     isModalNewPostOpen(true);
