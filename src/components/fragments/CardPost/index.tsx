@@ -10,13 +10,13 @@ import {
   StyledGapLink,
 } from './style';
 
-interface ICardPostProps {
+interface iCardPostProps {
   img: string;
   author: string;
   title: string;
 }
 
-export const CardPost = ({ img, author, title }: ICardPostProps) => {
+export const CardPost = ({ img, author, title }: iCardPostProps) => {
   return (
     <StyledLiCardPost>
       <StyledImg src={img} alt='Imagem' />
