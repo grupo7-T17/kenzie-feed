@@ -9,7 +9,7 @@ export const RegisterPage = () => {
   return (
     <RegisterPageContainer>
       <StyledContainerHeader>
-        <Header userLogged={false} />
+        <Header />
       </StyledContainerHeader>
       <ContainerRegister />
 

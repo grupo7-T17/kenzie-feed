@@ -12,7 +12,7 @@ export const EditPage = () => {
   return (
     <>
       <StyledContainerEditHeader>
-        <Header userLogged={true} />
+        <Header />
       </StyledContainerEditHeader>
       <StyledEditContainer>
         <StyledContainerEditMain>

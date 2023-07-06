@@ -10,14 +10,13 @@ import {
   StyledLinkLoginPage,
   StyledLoginImage,
 } from './style';
-import { StyledButton } from '../../styles/buttons';
-import { StyledInput } from '../../styles/inputs';
+import { FormLogin } from '../../components/structures/FormLogin';
 
 export const LoginPage = () => {
   return (
     <StyledContainerMain>
       <StyledContainerHeader>
-        <Header buttonVisible={false}/>
+        <Header buttonVisible={false} />
       </StyledContainerHeader>
       <StyledDivLoginPage>
         <StyledContainerLoginImage>
@@ -25,24 +24,7 @@ export const LoginPage = () => {
         </StyledContainerLoginImage>
         <StyledDivInputLogin>
           <StyledTitleOne fontStyle='md'>Acesse o KenzieFeed</StyledTitleOne>
-          <StyledParagraph fontStyle='sm'>
-            Preencha os campos corretamente para fazer login
-          </StyledParagraph>
-          <StyledInput
-            inputStyle='default'
-            inputSize='md-max'
-            placeholder='E-mail'
-            className='width80'
-          ></StyledInput>
-          <StyledInput
-            inputStyle='default'
-            inputSize='md-max'
-            placeholder='Senha'
-            className='width80'
-          ></StyledInput>
-          <StyledButton buttonType='primary' buttonSize='md-max' className='width80'>
-            Entrar
-          </StyledButton>
+          <FormLogin/>
           <StyledParagraph fontStyle='sm'>Não é cadastrado?</StyledParagraph>
           <StyledLinkLoginPage to='/register'>Cadastre-se</StyledLinkLoginPage>
         </StyledDivInputLogin>
