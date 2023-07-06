@@ -7,11 +7,14 @@ import { RoutesMain } from './routes/RoutesMain';
 //import { RegisterPage } from './pages/RegisterPage';
 // import { AllNoticesPage } from './pages/AllNoticesPage';
 // import { FocusNoticePage } from './pages/FocusNoticePage';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const App = () => {
   return (
     <>
-      <RoutesMain/>
+      <RoutesMain />
       <ResetCss />
       <GlobalStyles />
       <ToastContainer />

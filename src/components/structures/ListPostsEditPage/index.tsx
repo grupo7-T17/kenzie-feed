@@ -8,13 +8,19 @@ import {
   HeaderPostsDashboard,
 } from './style';
 import Plus from '../../../assets/icons/circlewithplus.svg';
+import { ModalContext } from '../../../providers/ModalContext';
+import { useContext } from 'react';
 
 export const ListPostsDashboard = () => {
+  const { handleOpenModal } = useContext(ModalContext);
+
   return (
     <ListPostsDashboardContainer>
       <HeaderPostsDashboard>
         <StyledTitleOne fontStyle='md'>Suas publicações</StyledTitleOne>
         <StyledButton
+          type='button'
+          onClick={handleOpenModal}
           buttonSize='sm-min'
           buttonType='primary'
           className='buttonAdd'

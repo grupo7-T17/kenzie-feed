@@ -6,6 +6,7 @@ import { FocusNoticePage } from '../pages/FocusNoticePage';
 import { EditPage } from '../pages/EditPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { AllNoticesPage } from '../pages/AllNoticesPage';
+import { ModalProvider } from '../providers/ModalContext';
 
 export const RoutesMain = () => {
   return (
@@ -15,7 +16,14 @@ export const RoutesMain = () => {
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/notice' element={<FocusNoticePage />} />
       <Route path='/edit' element={<EditPage />} />
-      <Route path='/dashboard' element={<DashboardPage />} />
+      <Route
+        path='/dashboard'
+        element={
+          <ModalProvider>
+            <DashboardPage />
+          </ModalProvider>
+        }
+      />
       <Route path='/allnotices' element={<AllNoticesPage />} />
       <Route path='*' element={<Navigate to='/' />} />
     </Routes>
