@@ -19,15 +19,19 @@ const InputSettings = css<iInputSize & iInputStyle>`
     switch (inputStyle) {
       case 'default':
         return css`
-          border: 0.125rem solid var(--color-input-default);
+          border: 0.0625rem solid var(--color-input-default);
 
           &:focus {
-            border: 0.125rem solid var(--color-black);
+            border: 0.0625rem solid var(--color-black);
           }
         `;
       case 'borderless':
         return css`
-          border: 0.125rem solid var(--color-white);
+          border: 0.0625rem solid var(--color-white);
+
+          &:focus {
+            border: 0.0625rem solid var(--color-input-default);
+          }
         `;
     }
   }}
