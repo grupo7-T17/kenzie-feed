@@ -5,7 +5,7 @@ export const ListPostsDashboardContainer = styled.section`
   flex-direction: column;
   gap: 47px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 64rem;
 `;
 
 export const HeaderPostsDashboard = styled.div`
@@ -15,8 +15,15 @@ export const HeaderPostsDashboard = styled.div`
   align-items: center;
 
   .buttonAdd {
-    gap: 14px;
-    padding: 0px 11px;
+    gap: .875rem;
+    padding: 0px .6875rem;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
   }
 `;
 

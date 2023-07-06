@@ -8,7 +8,7 @@ export const ContainerRegister = () => {
 
     return (
         <StyledContainerRegister>
-            <ButtonBackRegister />
+            <ButtonBackRegister/>
             <FormRegister/>
             
       </StyledContainerRegister>
