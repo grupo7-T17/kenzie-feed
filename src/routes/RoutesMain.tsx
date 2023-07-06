@@ -7,24 +7,31 @@ import { EditPage } from '../pages/EditPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { AllNoticesPage } from '../pages/AllNoticesPage';
 import { ModalProvider } from '../providers/ModalContext';
+import { PublicRoutes } from './PublicRoutes';
+import { ProtectedRoutes } from './ProtectedRoutes';
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
-      <Route path='/notice' element={<FocusNoticePage />} />
-      <Route path='/edit' element={<EditPage />} />
-      <Route
-        path='/dashboard'
-        element={
-          <ModalProvider>
-            <DashboardPage />
-          </ModalProvider>
-        }
-      />
-      <Route path='/allnotices' element={<AllNoticesPage />} />
+      <Route element={<PublicRoutes />}>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/allnotices' element={<AllNoticesPage />} />
+        <Route path='/notice' element={<FocusNoticePage />} />
+      </Route>
+
+      <Route element={<ProtectedRoutes />}>
+        <Route
+          path='/dashboard'
+          element={
+            <ModalProvider>
+              <DashboardPage />
+            </ModalProvider>
+          }
+        />
+        <Route path='/edit' element={<EditPage />} />
+      </Route>
       <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );

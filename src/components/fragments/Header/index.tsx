@@ -4,21 +4,22 @@ import {
   StyledDivIconButton,
   QuitButton,
 } from './style';
-import { StyledButton, StyledButtonLink } from '../../../styles/buttons';
+import { StyledButtonLink } from '../../../styles/buttons';
 import { IconUser } from '../IconUser';
 import Logo from '../../../assets/logo.svg';
 import Quit from '../../../assets/icons/quit.svg';
 import { StyledLink } from '../../../styles/typography';
+import { UserContext } from '../../../providers/UserContext';
+import { useContext } from 'react';
 
 interface iHeaderProps {
   buttonVisible?: boolean;
-  userLogged?: boolean;
 }
 
-export const Header = ({
-  userLogged = false,
-  buttonVisible = true,
-}: iHeaderProps) => {
+export const Header = ({ buttonVisible = true }: iHeaderProps) => {
+  const { user, userLogout } = useContext(UserContext);
+  const userLogged = user; // Definindo userLogged igual ao estado user
+
   return (
     <StyledHeader>
       <StyledLink to='/'>
@@ -28,12 +29,16 @@ export const Header = ({
         <StyledDivIconButton>
           <IconUser letter='A' />
           {buttonVisible ? (
-            <StyledButton buttonType='outline' buttonSize='sm-min'>
+            <StyledButtonLink
+              to='/dashboard'
+              buttonType='outline'
+              buttonSize='sm-min'
+            >
               Dashboard
-            </StyledButton>
+            </StyledButtonLink>
           ) : null}
           <StyledLink to='/login'>
-            <QuitButton src={Quit} />
+            <QuitButton src={Quit} onClick={userLogout} />
           </StyledLink>
         </StyledDivIconButton>
       ) : (

@@ -11,7 +11,7 @@ export const DashboardPage = () => {
     <>
       <RegisterPageContainer>
         <StyledContainerHeader>
-          <Header userLogged buttonVisible={false} />
+          <Header buttonVisible={false} />
         </StyledContainerHeader>
       </RegisterPageContainer>
       <StyledDashboardContainer>

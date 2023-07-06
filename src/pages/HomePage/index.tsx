@@ -10,7 +10,7 @@ export const HomePage = () => {
     <StyledContainerMain>
       <HomePageContainer>
         <StyledContainerHeader>
-          <Header userLogged={false}/>
+          <Header/>
         </StyledContainerHeader>
         <WelcomeStructure />
         <ListPosts />
