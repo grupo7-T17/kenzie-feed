@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 // import { HomePage } from './pages/HomePage';
 import { RoutesMain } from './routes/RoutesMain';
+//import { RegisterPage } from './pages/RegisterPage';
 // import { AllNoticesPage } from './pages/AllNoticesPage';
 // import { FocusNoticePage } from './pages/FocusNoticePage';
 
@@ -14,6 +15,7 @@ const App = () => {
       <ResetCss />
       <GlobalStyles />
       <ToastContainer />
+      {/*<RegisterPage/>*/}
       {/* <HomePage/> */}
       {/* <AllNoticesPage /> */}
       {/* <FocusNoticePage/> */}
