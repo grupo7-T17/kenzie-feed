@@ -8,7 +8,6 @@ export const StyledFormRegister = styled.form`
   max-width: 47.375rem;
   gap: 1.25rem;
   padding-top :6.25rem;
- 
 
 `;
 
@@ -23,9 +22,16 @@ export const StyledRegisterInput = styled.div`
  
 `;
 
-export const StyledRegisterFormButton = styled.button`
-padding-left : 28rem ;
+export const StyledRegisterFormButton = styled.div`
+display: flex;
+justify-content: flex-end;
+background-color: transparent;
+width: 100%;
+max-width: 38.7rem;
 
+@media (max-width:617px) {
+    justify-content: center;
+}
 `;
 
 

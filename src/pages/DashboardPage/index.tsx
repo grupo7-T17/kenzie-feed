@@ -1,16 +1,19 @@
 import { Footer } from '../../components/fragments/Footer';
 import { Header } from '../../components/fragments/Header';
-import { ListPostsDashboard } from '../../components/structures/ListPostsEditPage';
+import { ListPostsDashboard } from '../../components/structures/ListPostsDashboardPage';
 import { NewPostModal } from '../../components/structures/NewPostModal';
 import { StyledContainerHeader } from '../../styles/grid';
+import { RegisterPageContainer } from '../RegisterPage/style';
 import { StyledDashboardContainer } from './style';
 
 export const DashboardPage = () => {
   return (
     <>
-      <StyledContainerHeader>
-        <Header userLogged buttonVisible={false} />
-      </StyledContainerHeader>
+      <RegisterPageContainer>
+        <StyledContainerHeader>
+          <Header userLogged buttonVisible={false} />
+        </StyledContainerHeader>
+      </RegisterPageContainer>
       <StyledDashboardContainer>
         <ListPostsDashboard />
       </StyledDashboardContainer>
