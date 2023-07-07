@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { api } from '../services/api';
 interface iProviderUserProps {
@@ -14,6 +14,7 @@ export interface iUserContext {
   registerUser: (user: iUserRegisterLogin) => Promise<void>;
   loginUser: (credentials: iUserCredentials) => Promise<void>;
   userLogout: () => void;
+  navigate: NavigateFunction;
 }
 
 export interface iUserRegisterLogin {
@@ -68,7 +69,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(`Não foi possível fazer o cadastro`, {
         position: 'top-right',
         autoClose: 3000,
@@ -119,7 +120,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(`Usuário ou senha incorretos`, {
         position: 'top-right',
         autoClose: 3000,
@@ -147,7 +148,8 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
         setUserRegisterLogin,
         registerUser,
         loginUser,
-        userLogout
+        userLogout,
+        navigate
       }}
     >
       {children}

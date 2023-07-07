@@ -10,9 +10,13 @@ import {
 import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
 import { useContext } from 'react';
+import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
+  const { postsList } = useContext(NoticeContext);
+
+  console.log(postsList);
 
   return (
     <ListPostsDashboardContainer>
@@ -30,26 +34,15 @@ export const ListPostsDashboard = () => {
         </StyledButton>
       </HeaderPostsDashboard>
       <UlPostsHomepage>
-        <CardEditPost
-          img='../../src/assets/imgs/teste-viagem.png'
-          title='5 lugares para viajar nas próximas férias de verão'
-        />
-        <CardEditPost
-          img='../../src/assets/imgs/teste-saladafrutas.png'
-          title='Como uma alimentação saudável pode tornar sua vida melhor'
-        />
-        <CardEditPost
-          img='../../src/assets/imgs/teste-saladafrutas.png'
-          title='Como uma alimentação saudável pode tornar sua vida melhor'
-        />
-        <CardEditPost
-          img='../../src/assets/imgs/teste-saladafrutas.png'
-          title='Como uma alimentação saudável pode tornar sua vida melhor'
-        />
-        <CardEditPost
-          img='../../src/assets/imgs/teste-saladafrutas.png'
-          title='Como uma alimentação saudável pode tornar sua vida melhor'
-        />
+        {postsList.map((post) => (
+          <CardEditPost
+            key={post.id}
+            id={post.id}
+            img={post.image}
+            title={post.title}
+            owner={post.owner}
+          />
+        ))}
       </UlPostsHomepage>
     </ListPostsDashboardContainer>
   );

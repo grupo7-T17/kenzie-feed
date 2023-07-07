@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Footer } from '../../components/fragments/Footer';
 import { Header } from '../../components/fragments/Header';
 import { ListPosts } from '../../components/structures/ListPostsHomepage';
@@ -8,20 +8,7 @@ import { HomePageContainer } from './style';
 import { NoticeContext } from '../../providers/NoticesContext';
 
 export const HomePage = () => {
-  const { getAllNoticies } = useContext(NoticeContext);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const loadAllNotices = async () => {
-      await getAllNoticies(setLoading);
-    };
-
-    loadAllNotices();
-    // if (!postsList) {
-    //   loadAllNotices()
-    // }
-  }, []);
-
+  const { loading } = useContext(NoticeContext);
   return (
     <StyledContainerMain>
       <HomePageContainer>
