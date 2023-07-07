@@ -20,7 +20,7 @@ export const LoginPage = () => {
       </StyledContainerHeader>
       <StyledDivLoginPage>
         <StyledContainerLoginImage>
-          <StyledLoginImage src={welcome} alt='Imagem de Pizza' />
+          <StyledLoginImage src={welcome} alt='Imagem de xícara e notebook' />
         </StyledContainerLoginImage>
         <StyledDivInputLogin>
           <StyledTitleOne fontStyle='md'>Acesse o KenzieFeed</StyledTitleOne>

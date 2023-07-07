@@ -6,10 +6,13 @@ export const RegisterPageContainer = styled.main`
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 2.4375rem;
   padding: 0 1.25rem;
 `;
 
 export const StyledRegisterFooter = styled.div`
-  padding-top: 11.875rem;
+  padding-top: 3.875rem;
+
+  @media (max-width: 768px) {
+    padding-top: 1.5rem;
+  }
 `;

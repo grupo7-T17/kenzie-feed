@@ -38,6 +38,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
   const [user, setUser] = useState(false);
   const token = localStorage.getItem('@TOKEN');
   const id = localStorage.getItem('@USERID');
+  const name = localStorage.getItem('@NAME');
 
   useEffect(() => {
     const storedUser = localStorage.getItem('@USER');
@@ -104,11 +105,12 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
 
         localStorage.removeItem('@TOKEN');
         localStorage.removeItem('@USERID');
-        localStorage.removeItem('@USER');
+        localStorage.removeItem('@NAME');
 
         localStorage.setItem('@TOKEN', data.accessToken);
         localStorage.setItem('@USERID', data.user.id);
-        localStorage.setItem('@USER', JSON.stringify(credentials));
+        localStorage.setItem('@NAME', data.user.name);
+        
 
         toast.success(`Login bem sucedido!`, {
           position: 'top-right',

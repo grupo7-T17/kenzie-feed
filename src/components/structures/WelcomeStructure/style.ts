@@ -18,7 +18,7 @@ export const StyledContainerImage = styled.div`
   margin-top: 2.1875rem;
   width: 100%;
   max-width: 76.875rem;
-  max-height: 24rem;
+  max-height: 19.375rem;
   overflow: hidden;
   border-radius: 2.8125rem;
 `;
