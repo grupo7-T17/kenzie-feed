@@ -16,7 +16,7 @@ export const StyledLogo = styled.img`
 export const StyledDivIconButton = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 0.75rem;
   align-items: center;
   
   @media (max-width: 768px) {
@@ -25,7 +25,7 @@ export const StyledDivIconButton = styled.div`
     }
 
     button {
-      padding: 0px 10px;
+      padding: 0rem 0.625rem;
     }
   }
 `;

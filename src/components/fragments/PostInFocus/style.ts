@@ -8,7 +8,7 @@ export const StyledDivCardPost = styled.div`
     text-align: center;
     gap: 1.875rem;
     width: 100%;
-    max-width: 740px;
+    max-width: 46.25rem;
 
     .focusNoticeParagraph {
         display: flex;

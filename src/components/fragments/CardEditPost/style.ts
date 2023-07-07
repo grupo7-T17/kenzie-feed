@@ -19,13 +19,13 @@ export const StyledEditImg = styled.img`
 
 export const StyledContainerEditImg = styled.div`
   width: 100%;
-  max-width: 153px;
-  height: 138px;
+  max-width: 9.5625rem;
+  height: 8.625rem;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 25px;
+  border-radius: 1.5625rem;
 
   @media (max-width: 768px) {
     display: none;
@@ -36,7 +36,7 @@ export const StyledDivLeft = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
   width: 100%;
 `;
 

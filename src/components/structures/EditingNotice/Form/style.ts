@@ -11,4 +11,8 @@ export const StyledEditingFormContainer = styled.form`
   > button {
     margin-top: 1.25rem;
   }
+
+  label {
+    font-size: clamp(var(--font-size-2), 8vw, var(--font-size-0));
+  }
 `;

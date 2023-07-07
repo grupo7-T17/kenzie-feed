@@ -7,6 +7,7 @@ export const StyledTextareaLabelContainer = styled.fieldset`
   gap: 0.75rem;
 
   p {
+    font-size: var(--font-size-0);
     font-weight: var(--font-weight-0);
     color: red;
   }
