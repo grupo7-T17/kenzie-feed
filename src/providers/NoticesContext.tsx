@@ -57,6 +57,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     } finally {
       setLoading(false);
     }
+    console.log(postsList)
   }
 
   return (
