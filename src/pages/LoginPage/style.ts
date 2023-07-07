@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledDivLoginPage = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 85px auto;
+  margin: 5.3125rem auto;
 
   @media (max-width: 768px) {
     justify-content: center;
@@ -41,8 +41,8 @@ export const StyledContainerLoginImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 456px;
-  min-height: 556px;
+  width: 28.5rem;
+  min-height: 34.75rem;
   overflow: hidden;
   border-radius: 2.8125rem;
 

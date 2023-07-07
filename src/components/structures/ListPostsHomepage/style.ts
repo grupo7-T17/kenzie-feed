@@ -21,7 +21,7 @@ export const UlPostsHomepage = styled.ul`
 export const StyledWelcomeImage = styled.img`
   margin-top: 2.1875rem;
   width: 100%;
-  max-height: 384px;
+  max-height: 24rem;
 `;
 
 export const HeaderPostsHomepage = styled.div`

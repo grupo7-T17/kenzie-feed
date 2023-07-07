@@ -15,20 +15,24 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
   border-radius: 0.25rem;
   padding: 0 1rem;
 
+  p {
+    font-weight: var(--font-weight-1);
+  }
+
   ${({ buttontype }) => {
     switch (buttontype) {
       case 'primary':
         return css`
           color: var(--color-white);
           background-color: var(--color-primary);
-          border: 0.125rem solid var(--color-primary);
+          border: 0.0625rem solid var(--color-primary);
         `;
 
       case 'outline':
         return css`
           color: var(--color-primary);
           background-color: var(--color-white);
-          border: 0.125rem solid var(--color-primary);
+          border: 0.0625rem solid var(--color-primary);
         `;
     }
   }}

@@ -25,6 +25,7 @@ export const EditingNoticeForm = () => {
         label='Título'
         inputSize='md-max'
         inputStyle='borderless'
+        placeholder='Informe um título'
         {...register('title')}
         errors={errors.title?.message}
       />
@@ -32,6 +33,7 @@ export const EditingNoticeForm = () => {
         label='Imagem em destaque'
         inputSize='md-max'
         inputStyle='borderless'
+        placeholder='Cole um link de imagem'
         {...register('image')}
         errors={errors.image?.message}
       />
@@ -39,6 +41,7 @@ export const EditingNoticeForm = () => {
         label='Conteúdo'
         inputSize='md-max'
         inputStyle='borderless'
+        placeholder='Escreva um conteúdo'
         {...register('description')}
         errors={errors.description?.message}
       />

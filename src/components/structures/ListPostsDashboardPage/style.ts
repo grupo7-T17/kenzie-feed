@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ListPostsDashboardContainer = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 47px;
+  gap: 2.9375rem;
   width: 100%;
   max-width: 64rem;
 `;
@@ -16,14 +16,14 @@ export const HeaderPostsDashboard = styled.div`
 
   .buttonAdd {
     gap: .875rem;
-    padding: 0px .6875rem;
+    padding: 0rem .6875rem;
   }
 
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 1.25rem;
   }
 `;
 

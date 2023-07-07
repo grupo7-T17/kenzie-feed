@@ -1,3 +1,4 @@
+import { Footer } from './../../components/fragments/Footer/index';
 import styled from 'styled-components';
 
 export const StyledEditContainer = styled.div`
@@ -6,7 +7,7 @@ export const StyledEditContainer = styled.div`
 `;
 
 export const StyledFooterEdit = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  > Footer {
+    position: static;
+  }
 `;
