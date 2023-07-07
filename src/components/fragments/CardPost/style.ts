@@ -15,8 +15,24 @@ export const StyledLiCardPost = styled.li`
     }
 `;
 
+
+export const StyledDivImg = styled.div`
+display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.1875rem;
+  width: 100%;
+  max-width: 76.875rem;
+  height: 16rem;
+  overflow: hidden;
+  border-radius: 2.8125rem;
+  box-sizing: border-box;
+`
+
 export const StyledImg = styled.img`
     width: 100%;
+    border-radius: 2.8125rem;
+    object-fit: cover;
 `;
 
 export const StyledDivBottom = styled.div`
