@@ -33,6 +33,7 @@ export const StyledImg = styled.img`
     width: 100%;
     border-radius: 2.8125rem;
     object-fit: cover;
+    min-height: 12.5rem;
 `;
 
 export const StyledDivBottom = styled.div`
