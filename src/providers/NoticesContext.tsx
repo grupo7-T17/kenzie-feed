@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import { api } from '../services/api';
 
 interface iProviderNoticeProps {
@@ -36,6 +37,7 @@ export interface iNoticeContext {
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
   getAllNoticies: (setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+  createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -60,6 +62,31 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     console.log(postsList)
   }
 
+  const createNewNotice = async(formData: iPostRegisterUpdate) =>{ //Nesse caso tem o mesmo corpo do update, então reutilizei a interface
+    try {
+        const token = localStorage.getItem('@TOKEN')
+        const { data } = await api.post('/posts', formData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }) 
+        setPostsList((postsList) => [...postsList, data])
+        toast.success(`Criação bem sucedida!`, {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
+
   return (
     <NoticeContext.Provider
       value={{
@@ -70,6 +97,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         like,
         setLike,
         getAllNoticies,
+        createNewNotice
       }}
     >
       {children}
