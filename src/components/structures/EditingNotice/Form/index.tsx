@@ -42,7 +42,7 @@ export const EditingNoticeForm = () => {
         {...register('description')}
         errors={errors.description?.message}
       />
-      <StyledButton type='submit' buttonSize='md-min' buttonType='primary'>
+      <StyledButton type='submit' buttonsize='md-min' buttontype='primary'>
         Salvar post
       </StyledButton>
     </StyledEditingFormContainer>

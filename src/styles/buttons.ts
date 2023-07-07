@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 interface iButtonType {
-  buttonType: 'primary' | 'outline';
+  buttontype: 'primary' | 'outline';
 }
 
 interface iButtonSize {
-  buttonSize: 'lg-min' | 'lg-max' | 'md-min' | 'md-max' | 'sm-min' | 'sm-max';
+  buttonsize: 'lg-min' | 'lg-max' | 'md-min' | 'md-max' | 'sm-min' | 'sm-max';
 }
 
 const ButtonDefault = css<iButtonType & iButtonSize>`
@@ -15,8 +15,8 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
   border-radius: 0.25rem;
   padding: 0 1rem;
 
-  ${({ buttonType }) => {
-    switch (buttonType) {
+  ${({ buttontype }) => {
+    switch (buttontype) {
       case 'primary':
         return css`
           color: var(--color-white);
@@ -33,8 +33,8 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
     }
   }}
 
-  ${({ buttonSize }) => {
-    switch (buttonSize) {
+  ${({ buttonsize }) => {
+    switch (buttonsize) {
       case 'lg-min':
         return css`
           height: 4.0625rem;

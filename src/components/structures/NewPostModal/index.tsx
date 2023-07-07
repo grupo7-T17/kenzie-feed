@@ -38,7 +38,7 @@ export const NewPostModal = () => {
               placeholder='Conteúdo do post'
             />
           </form>
-          <StyledButton type='submit' buttonSize='md-min' buttonType='primary'>
+          <StyledButton type='submit' buttonsize='md-min' buttontype='primary'>
             <StyledParagraph fontStyle='sm'>Criar post</StyledParagraph>
           </StyledButton>
           <button type='button' onClick={handleCloseModal}>

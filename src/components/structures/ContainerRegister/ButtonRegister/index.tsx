@@ -6,7 +6,7 @@ import { StyledParagraph } from '../../../../styles/typography';
 export const ButtonBackRegister = () => {
   return (
     <StyledButtonBackRegister>
-      <StyledButtonLink buttonSize='sm-max' buttonType='outline' to='/'>
+      <StyledButtonLink buttonSize='sm-max' buttontype='outline' to='/'>
         <figure>
           <img
             src={Seta}

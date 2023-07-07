@@ -31,8 +31,8 @@ export const Header = ({ buttonVisible = true }: iHeaderProps) => {
           {buttonVisible ? (
             <StyledButtonLink
               to='/dashboard'
-              buttonType='outline'
-              buttonSize='sm-min'
+              buttontype='outline'
+              buttonsize='sm-min'
             >
               Dashboard
             </StyledButtonLink>
@@ -46,8 +46,8 @@ export const Header = ({ buttonVisible = true }: iHeaderProps) => {
           {buttonVisible ? (
             <StyledButtonLink
               to='/login'
-              buttonType='primary'
-              buttonSize='sm-min'
+              buttontype='primary'
+              buttonsize='sm-min'
             >
               Acessar
             </StyledButtonLink>
