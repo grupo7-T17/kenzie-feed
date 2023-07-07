@@ -7,11 +7,12 @@ interface iTextareaLabel extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   inputSize: iInputSize['inputSize'];
   inputStyle: iInputStyle['inputStyle'];
+  errors?: string
 }
 
 export const TextareaLabel = forwardRef(
   (
-    { label, inputSize, inputStyle, ...rest }: iTextareaLabel,
+    { label, errors , inputSize, inputStyle, ...rest }: iTextareaLabel,
     ref: ForwardedRef<HTMLTextAreaElement>
   ) => {
     return (
@@ -23,6 +24,7 @@ export const TextareaLabel = forwardRef(
           ref={ref}
           {...rest}
         />
+        {errors ? <p>{errors}</p>:null}
       </StyledTextareaLabelContainer>
     );
   }
