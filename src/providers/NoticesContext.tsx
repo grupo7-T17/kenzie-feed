@@ -82,7 +82,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
             theme: 'light',
           });
     } catch (error) {
-        console.log(error)
+      console.log(error)
+      toast.success(`Falha ao criar notícia.add .`, {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
     }
   }
 
