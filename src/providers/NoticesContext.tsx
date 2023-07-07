@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { api } from '../services/api';
 
 interface iProviderNoticeProps {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ export interface iNoticeContext {
   setPostCreateUpdate: React.Dispatch<React.SetStateAction<iPostRegisterUpdate | null>>;
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
+  getAllNoticies: (setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -44,6 +46,19 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
 
+  const getAllNoticies = async (setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+    try {
+      setLoading(true)
+      const { data } = await api.get('/posts?_embed=likes')
+      console.log(data)
+      setPostsList(data)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <NoticeContext.Provider
       value={{
@@ -53,6 +68,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         setPostCreateUpdate,
         like,
         setLike,
+        getAllNoticies,
       }}
     >
       {children}
