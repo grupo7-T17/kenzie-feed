@@ -1,4 +1,6 @@
-import { useState, useContext } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
 import { StyledButton } from '../../../../styles/buttons';
 import { StyledParagraph, StyledTitleOne } from '../../../../styles/typography';
 import { InputLabel } from '../../../fragments/InputLabel';
@@ -7,31 +9,27 @@ import {
   StyledRegisterFormButton,
   StyledRegisterInput,
 } from './style';
-import {
-  UserContext,
-  iUserRegisterLogin,
-} from '../../../../providers/UserContext';
+import { UserContext } from '../../../../providers/UserContext';
+import { TRegisterFormScheme, registerFormScheme } from './SchemeFormregister';
 
 export const FormRegister = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
   const { registerUser } = useContext(UserContext);
 
-  const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    if (password === confirmPassword) {
-      const user: iUserRegisterLogin = { name, email, password };
-      registerUser(user);
-    } else {
-      console.log('As senhas não coincidem');
-    }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TRegisterFormScheme>({
+    resolver: zodResolver(registerFormScheme),
+  });
+
+  const submit: SubmitHandler<TRegisterFormScheme> = (formData) => {
+    registerUser(formData);
+    console.log(formData);
   };
 
   return (
-    <StyledFormRegister>
+    <StyledFormRegister onSubmit={handleSubmit(submit)}>
       <StyledTitleOne fontStyle='md'>Cadastre um usuário</StyledTitleOne>
       <StyledParagraph fontStyle='lg'>
         Preencha os campos corretamente para fazer login
@@ -41,39 +39,35 @@ export const FormRegister = () => {
           placeholder='Nome'
           inputSize='md-min'
           inputStyle='default'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          {...register('name')}
+          errors={errors.name?.message}
         />
         <InputLabel
           placeholder='E-mail'
           inputSize='md-min'
           inputStyle='default'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register('email')}
+          errors={errors.email?.message}
         />
         <InputLabel
           placeholder='Senha'
           inputSize='md-min'
           inputStyle='default'
           type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          {...register('password')}
+          errors={errors.password?.message}
         />
         <InputLabel
           placeholder='Confirmar senha'
           inputSize='md-min'
           inputStyle='default'
           type='password'
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          {...register('confirmPassword')}
+          errors={errors.confirmPassword?.message}
         />
       </StyledRegisterInput>
       <StyledRegisterFormButton>
-        <StyledButton
-          buttonType='primary'
-          buttonSize='md-min'
-          onClick={handleRegister}
-        >
+        <StyledButton type='submit' buttonType='primary' buttonSize='md-min'>
           Cadastrar-se
         </StyledButton>
       </StyledRegisterFormButton>
