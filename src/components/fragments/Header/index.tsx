@@ -19,7 +19,6 @@ interface iHeaderProps {
 export const Header = ({ buttonVisible = true }: iHeaderProps) => {
   const { userLogout } = useContext(UserContext);
   const userLogged = Boolean(localStorage.getItem('@USERLOGGED'));
-    console.log(userLogged)
   return (
     <StyledHeader>
       <StyledLink to='/'>

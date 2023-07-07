@@ -46,6 +46,10 @@ export const StyledDivRight = styled.div`
   justify-content: space-between;
   gap: 0.875rem;
   align-items: center;
+
+  > button {
+    background-color: transparent;
+  }
 `;
 
 export const StyledIcon = styled.img`
