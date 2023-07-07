@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { api } from '../services/api';
@@ -14,7 +14,6 @@ export interface iUserContext {
   registerUser: (user: iUserRegisterLogin) => Promise<void>;
   loginUser: (credentials: iUserCredentials) => Promise<void>;
   userLogout: () => void;
-  user: boolean;
 }
 
 export interface iUserRegisterLogin {
@@ -35,17 +34,6 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
     iUserRegisterLogin[]
   >([]);
   const navigate = useNavigate();
-  const [user, setUser] = useState(false);
-  const token = localStorage.getItem('@TOKEN');
-  const id = localStorage.getItem('@USERID');
-  const name = localStorage.getItem('@NAME');
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('@USER');
-    if (storedUser) {
-      setUser(true);
-    }
-  }, []);
 
   const registerUser = async (user: iUserRegisterLogin) => {
     try {
@@ -101,16 +89,11 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
       if (response.status === 200) {
         const data = response.data;
         setUserRegisterLogin([...userRegisterLogin, data.user]);
-        setUser(true);
-
-        localStorage.removeItem('@TOKEN');
-        localStorage.removeItem('@USERID');
-        localStorage.removeItem('@NAME');
 
         localStorage.setItem('@TOKEN', data.accessToken);
         localStorage.setItem('@USERID', data.user.id);
-        localStorage.setItem('@NAME', data.user.name);
-        
+        localStorage.setItem('@NAME', data.user.name); 
+        localStorage.setItem('@USERLOGGED', JSON.stringify(true));
 
         toast.success(`Login bem sucedido!`, {
           position: 'top-right',
@@ -154,7 +137,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
     localStorage.removeItem('@TOKEN');
     localStorage.removeItem('@USERID');
     localStorage.removeItem('@USER');
-    setUser(false);
+    localStorage.removeItem('@USERLOGGED');
   };
 
   return (
@@ -164,8 +147,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
         setUserRegisterLogin,
         registerUser,
         loginUser,
-        userLogout,
-        user,
+        userLogout
       }}
     >
       {children}

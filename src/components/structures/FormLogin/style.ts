@@ -7,6 +7,9 @@ export const StyledFormLogin = styled.form`
   align-items: center;
 
   fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 90%;
   }
 
