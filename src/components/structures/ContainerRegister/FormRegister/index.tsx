@@ -67,7 +67,7 @@ export const FormRegister = () => {
         />
       </StyledRegisterInput>
       <StyledRegisterFormButton>
-        <StyledButton type='submit' buttonType='primary' buttonSize='md-min'>
+        <StyledButton type='submit' buttontype='primary' buttonsize='md-min'>
           Cadastrar-se
         </StyledButton>
       </StyledRegisterFormButton>

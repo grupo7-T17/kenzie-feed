@@ -39,11 +39,7 @@ export const FormLogin = () => {
         {...register('password')}
         errors={errors.password?.message}
       />
-      <StyledButton
-        type='submit'
-        buttonType='primary'
-        buttonSize='md-max'
-      >
+      <StyledButton type='submit' buttontype='primary' buttonsize='md-max'>
         Entrar
       </StyledButton>
     </StyledFormLogin>

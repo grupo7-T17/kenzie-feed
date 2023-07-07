@@ -12,15 +12,14 @@ import {
 } from './style';
 import Ops from '../../../assets/ops.svg';
 interface iCardPostProps {
-  key: number;
   img: string;
   author: string;
   title: string;
 }
 
-export const CardPost = ({ key, img, author, title }: iCardPostProps) => {
+export const CardPost = ({ img, author, title }: iCardPostProps) => {
   return (
-    <StyledLiCardPost key={key}>
+    <StyledLiCardPost>
       <StyledDivImg>
         {img ? (
           <StyledImg src={img} alt='Imagem' />

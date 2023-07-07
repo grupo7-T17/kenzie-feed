@@ -17,8 +17,8 @@ export const ListPosts = () => {
         <StyledTitleOne fontStyle='md'>Últimas Notícias</StyledTitleOne>
 
         <StyledButtonLink
-          buttonType='primary'
-          buttonSize='sm-min'
+          buttontype='primary'
+          buttonsize='sm-min'
           to='/allnotices'
         >
           Ver tudo

@@ -21,8 +21,8 @@ export const ListPostsDashboard = () => {
         <StyledButton
           type='button'
           onClick={handleOpenModal}
-          buttonSize='sm-min'
-          buttonType='primary'
+          buttonsize='sm-min'
+          buttontype='primary'
           className='buttonAdd'
         >
           <StyledIconPlus src={Plus} />
