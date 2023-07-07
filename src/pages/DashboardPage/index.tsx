@@ -4,7 +4,7 @@ import { ListPostsDashboard } from '../../components/structures/ListPostsDashboa
 import { NewPostModal } from '../../components/structures/NewPostModal';
 import { StyledContainerHeader } from '../../styles/grid';
 import { RegisterPageContainer } from '../RegisterPage/style';
-import { StyledDashboardContainer } from './style';
+import { StyledDashboardContainer, StyledFooterContainer } from './style';
 
 export const DashboardPage = () => {
   return (
@@ -17,7 +17,9 @@ export const DashboardPage = () => {
       <StyledDashboardContainer>
         <ListPostsDashboard />
       </StyledDashboardContainer>
-      <Footer />
+      <StyledFooterContainer>
+        <Footer />
+      </StyledFooterContainer>
       <NewPostModal />
     </>
   );

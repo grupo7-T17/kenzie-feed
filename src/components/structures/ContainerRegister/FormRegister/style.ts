@@ -21,7 +21,7 @@ export const StyledRegisterInput = styled.div`
   width: 100%;
   justify-content: center;
   gap: 1.25rem;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const StyledRegisterFormButton = styled.div`
