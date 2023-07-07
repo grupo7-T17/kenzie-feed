@@ -1,9 +1,7 @@
-import { useContext } from "react"
-import { Navigate, Outlet } from "react-router-dom" 
-import { UserContext } from "../../providers/UserContext"
+import { Navigate, Outlet } from 'react-router-dom';
 
 export const PublicRoutes = () => {
-    const { user } = useContext(UserContext) 
+  const userLogged = localStorage.getItem('@USERLOGGED');
 
-    return !user ? <Outlet /> : <Navigate to = "/dashboard"/>
-}
+  return userLogged ? <Navigate to='/dashboard' /> : <Outlet />;
+};

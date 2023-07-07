@@ -16,7 +16,7 @@ export const EditingNoticeForm = () => {
   });
 
   const submit: SubmitHandler<tEditingFormValues> = (formData) => {
-    console.log(formData); // printa titulo, link de imagem e descrição
+    console.log(formData);
   };
 
   return (

@@ -6,7 +6,7 @@ import {
   StyledContainerEditMain,
   StyledContainerEditHeader,
 } from '../../styles/grid';
-import { StyledEditContainer } from './style';
+import { StyledEditContainer, StyledFooterEdit } from './style';
 
 export const EditPage = () => {
   return (
@@ -20,7 +20,9 @@ export const EditPage = () => {
           <EditingNoticeForm />
         </StyledContainerEditMain>
       </StyledEditContainer>
-      <Footer />
+      <StyledFooterEdit>
+        <Footer />
+      </StyledFooterEdit>
     </>
   );
 };

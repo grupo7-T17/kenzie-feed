@@ -7,19 +7,16 @@ import { EditPage } from '../pages/EditPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { AllNoticesPage } from '../pages/AllNoticesPage';
 import { ModalProvider } from '../providers/ModalContext';
-import { PublicRoutes } from './PublicRoutes';
 import { ProtectedRoutes } from './ProtectedRoutes';
 
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route element={<PublicRoutes />}>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/allnotices' element={<AllNoticesPage />} />
-        <Route path='/notice' element={<FocusNoticePage />} />
-      </Route>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/allnotices' element={<AllNoticesPage />} />
+      <Route path='/notice' element={<FocusNoticePage />} />
 
       <Route element={<ProtectedRoutes />}>
         <Route
