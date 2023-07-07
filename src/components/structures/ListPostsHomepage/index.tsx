@@ -10,7 +10,7 @@ import {
 import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListPosts = () => {
-  const { postsList } = useContext(NoticeContext)
+  const { postsList } = useContext(NoticeContext);
   return (
     <ListPostsHomepage>
       <HeaderPostsHomepage>
@@ -25,14 +25,18 @@ export const ListPosts = () => {
         </StyledButtonLink>
       </HeaderPostsHomepage>
       <UlPostsHomepage>
-         {postsList?.length >= 1 ? postsList.map(post => (
-            <CardPost
-            key={post.id}
-            img={post.image}
-            author={post.owner}
-            title={post.title}
-          />
-          )): null}
+        {postsList?.length >= 1
+          ? postsList
+              .slice(0, 4)
+              .map((post) => (
+                <CardPost
+                  key={post.id}
+                  img={post.image}
+                  author={post.owner}
+                  title={post.title}
+                />
+              ))
+          : null}
       </UlPostsHomepage>
     </ListPostsHomepage>
   );
