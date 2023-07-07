@@ -3,14 +3,18 @@ import styled from 'styled-components';
 export const StyledFormLogin = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
   align-items: center;
 
-  .width80 {
-    width: 80%;
+  fieldset {
+    width: 90%;
+  }
 
-    @media (max-width: 764px) {
-      width: 100%;
-    }
+  > button {
+    width: 90%;
+  }
+
+  @media (max-width: 764px) {
+    width: 100%;
   }
 `;
