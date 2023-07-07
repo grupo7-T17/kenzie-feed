@@ -42,6 +42,7 @@ export interface iNoticeContext {
   createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  deletePost: (id: number) => Promise<void>;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -95,6 +96,24 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     }
   };
 
+  const deletePost = async (id: number) => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('@TOKEN');
+      await api.delete(`/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success(`Deletado com sucesso!`);
+    } catch (error) {
+      console.error(error);
+      toast.error(`Deletado com sucesso!`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <NoticeContext.Provider
       value={{
@@ -108,6 +127,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         createNewNotice,
         loading,
         setLoading,
+        deletePost,
       }}
     >
       {children}
