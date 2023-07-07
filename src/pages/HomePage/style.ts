@@ -7,4 +7,10 @@ export const HomePageContainer = styled.main`
     align-items: center;
     width: 100%;
     gap: 3.4375rem;
+
+    footer {
+        position: static;
+        left: none;
+        bottom: none;
+    }
 `

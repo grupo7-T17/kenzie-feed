@@ -6,21 +6,20 @@ import { StyledContainerHeader, StyledContainerMain } from '../../styles/grid';
 import { AllNoticesPageContainer } from './style';
 import { NoticeContext } from '../../providers/NoticesContext';
 
-
 export const AllNoticesPage = () => {
-  const { getAllNoticies } = useContext(NoticeContext)
-  const [loading, setLoading] = useState(false)
+  const { getAllNoticies } = useContext(NoticeContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loadAllNotices = async () => {
-      await getAllNoticies(setLoading)
-    }
+      await getAllNoticies(setLoading);
+    };
 
-    loadAllNotices()
+    loadAllNotices();
     // if (!postsList) {
     //   loadAllNotices()
     // }
-  }, [])
+  }, []);
 
   return (
     <StyledContainerMain>
@@ -28,12 +27,8 @@ export const AllNoticesPage = () => {
         <StyledContainerHeader>
           <Header />
         </StyledContainerHeader>
-        { loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ListAllPosts />
-        )}
-        <Footer/>
+        {loading ? <p>Loading...</p> : <ListAllPosts />}
+        <Footer />
       </AllNoticesPageContainer>
     </StyledContainerMain>
   );

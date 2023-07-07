@@ -8,33 +8,29 @@ import { HomePageContainer } from './style';
 import { NoticeContext } from '../../providers/NoticesContext';
 
 export const HomePage = () => {
-    const { getAllNoticies } = useContext(NoticeContext)
-    const [loading, setLoading] = useState(false)
-  
-    useEffect(() => {
-      const loadAllNotices = async () => {
-        await getAllNoticies(setLoading)
-      }
-  
-      loadAllNotices()
-      // if (!postsList) {
-      //   loadAllNotices()
-      // }
-    }, [])
+  const { getAllNoticies } = useContext(NoticeContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const loadAllNotices = async () => {
+      await getAllNoticies(setLoading);
+    };
+
+    loadAllNotices();
+    // if (!postsList) {
+    //   loadAllNotices()
+    // }
+  }, []);
 
   return (
     <StyledContainerMain>
       <HomePageContainer>
         <StyledContainerHeader>
-          <Header/>
+          <Header />
         </StyledContainerHeader>
         <WelcomeStructure />
-        { loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ListPosts/>
-        )}
-        <Footer/>
+        {loading ? <p>Loading...</p> : <ListPosts />}
+        <Footer />
       </HomePageContainer>
     </StyledContainerMain>
   );

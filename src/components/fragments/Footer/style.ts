@@ -9,6 +9,10 @@ export const StyledFooter = styled.footer`
   padding: clamp(3.75rem, 56.31vw, 2.5rem) 58px;
   background-color: var(--color-white);
 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
   @media (max-width: 768px) {
     padding: 30px 2.375rem;
   }

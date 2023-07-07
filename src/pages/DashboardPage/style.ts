@@ -6,5 +6,13 @@ export const StyledDashboardContainer = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  min-height:72vh;
+  min-height: 72vh;
+`;
+
+export const StyledFooterContainer = styled.div`
+  footer {
+    position: static;
+    left: none;
+    bottom: none;
+  }
 `;
