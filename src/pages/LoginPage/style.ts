@@ -4,10 +4,9 @@ import styled from 'styled-components';
 export const StyledDivLoginPage = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 85px auto;
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     justify-content: center;
   }
 `;
@@ -15,14 +14,16 @@ export const StyledDivLoginPage = styled.div`
 export const StyledDivInputLogin = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 30px;
+  gap: 1.875rem;
+  margin: auto 0;
+  padding: 0 1.875rem;
   align-items: center;
+  text-align: center;
 
   .width80 {
     width: 80%;
 
-    @media (max-width: 764px) {
+    @media (max-width: 768px) {
       width: 100%;
     }
   }

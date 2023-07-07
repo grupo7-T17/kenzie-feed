@@ -10,7 +10,7 @@ import {
   StyledRegisterInput,
 } from './style';
 import { UserContext } from '../../../../providers/UserContext';
-import { TRegisterFormScheme, registerFormScheme } from './SchemeFormregister';
+import { tRegisterFormSchema, registerFormSchema } from './SchemaFormregister';
 
 export const FormRegister = () => {
   const { registerUser } = useContext(UserContext);
@@ -19,11 +19,11 @@ export const FormRegister = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TRegisterFormScheme>({
-    resolver: zodResolver(registerFormScheme),
+  } = useForm<tRegisterFormSchema>({
+    resolver: zodResolver(registerFormSchema),
   });
 
-  const submit: SubmitHandler<TRegisterFormScheme> = (formData) => {
+  const submit: SubmitHandler<tRegisterFormSchema> = (formData) => {
     registerUser(formData);
     console.log(formData);
   };

@@ -5,8 +5,11 @@ import { loginSchema, tLoginFormValues } from './LoginSchema';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputLabel } from '../../fragments/InputLabel';
+import { UserContext } from '../../../providers/UserContext';
+import { useContext } from 'react';
 
 export const FormLogin = () => {
+    const { loginUser } = useContext(UserContext);
     const {
       register,
       handleSubmit,
@@ -16,7 +19,7 @@ export const FormLogin = () => {
     });
 
     const submit: SubmitHandler<tLoginFormValues> = (formData) => {
-      console.log(formData); // printa email e senha
+        loginUser(formData);
     };
 
   return (

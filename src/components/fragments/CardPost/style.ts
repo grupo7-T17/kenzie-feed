@@ -25,13 +25,12 @@ display: flex;
   max-width: 76.875rem;
   height: 16rem;
   overflow: hidden;
-  border-radius: 2.8125rem;
-  box-sizing: border-box;
+  border-radius: 1.5625rem;
 `
 
 export const StyledImg = styled.img`
     width: 100%;
-    border-radius: 2.8125rem;
+    border-radius: 1.5625rem;
     object-fit: cover;
     min-height: 12.5rem;
 `;

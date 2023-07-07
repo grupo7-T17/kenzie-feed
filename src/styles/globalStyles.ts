@@ -14,17 +14,17 @@ export const GlobalStyles = createGlobalStyle`
   --font-weight-1: 700;
   --font-weight-0: 400;
 
-  --font-size-10: 52px;
-  --font-size-9: 44px;
-  --font-size-8: 36px;
-  --font-size-7: 34px;
-  --font-size-6: 30px;
-  --font-size-5: 28px;
-  --font-size-4: 24px;
-  --font-size-3: 20px;
-  --font-size-2: 18px;
-  --font-size-1: 16px;
-  --font-size-0: 14px;
+  --font-size-10: 50px;
+  --font-size-9: 42px;
+  --font-size-8: 34px;
+  --font-size-7: 32px;
+  --font-size-6: 28px;
+  --font-size-5: 26px;
+  --font-size-4: 22px;
+  --font-size-3: 18px;
+  --font-size-2: 16px;
+  --font-size-1: 14px;
+  --font-size-0: 12px;
 
   --line-height-12: 68px;
   --line-height-11: 56px;
