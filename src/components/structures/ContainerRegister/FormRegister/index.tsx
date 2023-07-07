@@ -24,7 +24,7 @@ export const FormRegister = () => {
   });
 
   const submit: SubmitHandler<TRegisterFormScheme> = (formData) => {
-    // registerUser(formData);
+    registerUser(formData);
     console.log(formData);
   };
 
