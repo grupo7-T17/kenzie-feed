@@ -34,6 +34,7 @@ export const ListPosts = () => {
                   img={post.image}
                   author={post.owner}
                   title={post.title}
+                  postId={post.id}
                 />
               ))
           : null}

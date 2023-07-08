@@ -16,7 +16,8 @@ export const RoutesMain = () => {
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/allnotices' element={<AllNoticesPage />} />
-      <Route path='/notice' element={<FocusNoticePage />} />
+
+      <Route path='/notice/:id' element={<FocusNoticePage />} />
 
       <Route element={<ProtectedRoutes />}>
         <Route

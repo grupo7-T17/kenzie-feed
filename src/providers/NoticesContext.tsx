@@ -29,6 +29,16 @@ export interface iPostsList {
   likes: iLike[];
 }
 
+export interface iPostResponse {
+  title: string;
+  description: string;
+  owner: string;
+  userId: number;
+  id: number;
+  image: string;
+  likes: iLike[];
+}
+
 export interface iNoticeContext {
   postsList: iPostsList[];
   setPostsList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
@@ -38,41 +48,43 @@ export interface iNoticeContext {
   >;
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
-  getAllNoticies: () => Promise<void>;
   createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   deletePost: (id: number) => Promise<void>;
+  getPostById: (id: number) => Promise<iPostResponse | null>;
+  postInFocus: iPostsList | null;
+  setPostInFocus: React.Dispatch<React.SetStateAction<iPostsList | null>>;
+  likePost: (postId: number) => Promise<void>;
+  dislikePost: (postId: number) => Promise<void>;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
 
 export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
-  // postCreateUpdate é o mesmo corpo de objeto tanto para criação de post quanto de atualização
   const [postCreateUpdate, setPostCreateUpdate] =
     useState<iPostRegisterUpdate | null>(null);
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
 
   useEffect(() => {
-    getAllNoticies();
+    const getAllNotices = async () => {
+        try {
+          setLoading(true);
+          const { data } = await api.get('/posts?_embed=likes');
+          setPostsList(data);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+    getAllNotices();
   }, [postCreateUpdate]);
 
-  const getAllNoticies = async () => {
-    try {
-      setLoading(true);
-      const { data } = await api.get('/posts?_embed=likes');
-      setPostsList(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const createNewNotice = async (formData: iPostRegisterUpdate) => {
-    //Nesse caso tem o mesmo corpo do update, então reutilizei a interface
     try {
       const token = localStorage.getItem('@TOKEN');
       const { data } = await api.post('/posts', formData, {
@@ -93,7 +105,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       });
     } catch (error) {
       console.error(error);
-       toast.success(`Não foi possível criar.`, {
+      toast.success(`Não foi possível criar.`, {
         position: 'top-right',
         autoClose: 3000,
         hideProgressBar: false,
@@ -124,6 +136,63 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     }
   };
 
+  const getPostById = async (id: number) => {
+    try {
+      const { data } = await api.get(`/posts/${id}?_embed=likes`);
+      return data as iPostResponse;
+    } catch (error) {
+      console.error(error);
+      toast.error('Erro ao obter informações do post.');
+      return null;
+    }
+  };
+
+  const likePost = async (postId: number) => {
+    try {
+      const token = localStorage.getItem('@TOKEN');
+      const userId = localStorage.getItem('@USERID');
+      if (!token || !userId) {
+        toast.info('Logue para curtir');
+        return;
+      }
+
+      const likeData: iLike = {
+        userId: Number(userId),
+        postId,
+      };
+
+      await api.post('/likes', likeData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setLike(likeData);
+    } catch (error) {
+      console.error(error);
+      toast.error('Erro ao curtir o post.');
+    }
+  };
+
+  const dislikePost = async (postId: number) => {
+    try {
+      const token = localStorage.getItem('@TOKEN');
+
+      await api.delete(`/likes/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (like?.postId === postId) {
+        setLike(null);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Erro ao descurtir o post.');
+    }
+  };
+
   return (
     <NoticeContext.Provider
       value={{
@@ -133,11 +202,15 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         setPostCreateUpdate,
         like,
         setLike,
-        getAllNoticies,
         createNewNotice,
         loading,
         setLoading,
         deletePost,
+        getPostById,
+        postInFocus,
+        setPostInFocus,
+        likePost,
+        dislikePost,
       }}
     >
       {children}

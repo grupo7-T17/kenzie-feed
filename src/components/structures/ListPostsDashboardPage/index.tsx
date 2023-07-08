@@ -16,8 +16,6 @@ export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
   const { postsList } = useContext(NoticeContext);
 
-  console.log(postsList);
-
   return (
     <ListPostsDashboardContainer>
       <HeaderPostsDashboard>

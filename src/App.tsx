@@ -11,8 +11,6 @@ import { ClockLoader } from 'react-spinners';
 
 Modal.setAppElement('#root');
 
-
-
 const App = () => {
     const {loading} = useContext(NoticeContext)
   return (
@@ -21,7 +19,7 @@ const App = () => {
       <GlobalStyles />
       {loading ? 
       <StyledloadWrapper>
-        <ClockLoader color="#36d7b7" />
+        <ClockLoader color="var(--color-primary)" />
       </StyledloadWrapper> : <RoutesMain />}
       <ToastContainer />
     </>
