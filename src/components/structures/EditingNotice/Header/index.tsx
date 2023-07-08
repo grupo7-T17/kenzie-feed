@@ -7,7 +7,13 @@ export const EditingNoticeHeader = () => {
   return (
     <StyledEditingHeaderContainer>
       <StyledTitleOne fontStyle='md'>Editando:</StyledTitleOne>
-      <StyledButtonLink buttonsize='sm-min' buttontype='outline' to='/dashboard'>
+
+      <StyledButtonLink
+        buttonsize='sm-min'
+        buttontype='outline'
+        to='/dashboard'
+      >
+
         <figure>
           <img
             src={LeftArrowIcon}

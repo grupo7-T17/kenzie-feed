@@ -6,10 +6,8 @@ import { StyledContainerHeader, StyledContainerMain } from '../../styles/grid';
 import { AllNoticesPageContainer } from './style';
 import { NoticeContext } from '../../providers/NoticesContext';
 
-
 export const AllNoticesPage = () => {
-
-  const {loading} = useContext(NoticeContext)
+  const { getAllNoticies, loading } = useContext(NoticeContext);
 
   return (
     <StyledContainerMain>

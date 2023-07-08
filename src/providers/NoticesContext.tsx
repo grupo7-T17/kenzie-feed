@@ -56,7 +56,9 @@ export interface iNoticeContext {
   postInFocus: iPostsList | null;
   setPostInFocus: React.Dispatch<React.SetStateAction<iPostsList | null>>;
   likePost: (postId: number) => Promise<void>;
-  dislikePost: (postId: number) => Promise<void>;
+  dislikePost: (postId: number) => Promise<void>
+  setDashboardList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
+  dashboardList: iPostsList[];
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -64,24 +66,33 @@ export const NoticeContext = createContext({} as iNoticeContext);
 export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [postCreateUpdate, setPostCreateUpdate] =
     useState<iPostRegisterUpdate | null>(null);
+  const [dashboardList, setDashboardList] = useState<iPostsList[]>([]);
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
 
   useEffect(() => {
-    const getAllNotices = async () => {
-        try {
-          setLoading(true);
-          const { data } = await api.get('/posts?_embed=likes');
-          setPostsList(data);
-        } catch (error) {
-          console.error(error);
-        } finally {
-          setLoading(false);
-        }
-      };
-    getAllNotices();
+    const getAllNoticies = async () => {
+      try {
+        setLoading(true);
+        const { data } = await api.get('/posts?_embed=likes');
+        setPostsList(data);
+        const checkOwner = localStorage.getItem('@NAME');
+        const onlyUser = (postsList: iPostsList[]) => {
+          const filteredPosts = postsList.filter(
+            (post) => post.owner === checkOwner
+          );
+          setDashboardList(filteredPosts);
+        };
+        onlyUser(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getAllNoticies();
   }, [postCreateUpdate]);
 
   const createNewNotice = async (formData: iPostRegisterUpdate) => {
@@ -93,16 +104,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         },
       });
       setPostsList((postsList) => [...postsList, data]);
-      toast.success(`Criação bem sucedida!`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.success(`Criação bem sucedida!`);
     } catch (error) {
       console.error(error);
       toast.success(`Não foi possível criar.`, {
@@ -127,10 +129,18 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      const getIdFromStorage = localStorage.getItem('@CARDID');
+      const userId = getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
+
+      setDashboardList((postData) =>
+        postData.filter((post) => post.id !== userId)
+      );
+
       toast.success(`Deletado com sucesso!`);
     } catch (error) {
       console.error(error);
-      toast.error(`Deletado com sucesso!`);
+      toast.error(`Ops! Não foi possivel deletar`);
     } finally {
       setLoading(false);
     }
@@ -211,6 +221,8 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         setPostInFocus,
         likePost,
         dislikePost,
+        setDashboardList,
+        dashboardList,
       }}
     >
       {children}

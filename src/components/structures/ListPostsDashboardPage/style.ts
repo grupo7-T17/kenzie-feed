@@ -15,8 +15,8 @@ export const HeaderPostsDashboard = styled.div`
   align-items: center;
 
   .buttonAdd {
-    gap: .875rem;
-    padding: 0rem .6875rem;
+    gap: 0.875rem;
+    padding: 0rem 0.6875rem;
   }
 
   @media (max-width: 768px) {
@@ -34,10 +34,28 @@ export const UlPostsHomepage = styled.ul`
   justify-content: space-between;
   align-items: start;
   text-align: center;
+  height: 31.5625rem;
+  overflow-y: scroll;
   width: 100%;
-  gap: 2.5rem;
+  gap: 1.7rem;
+  align-content: flex-start;
 `;
 
 export const StyledIconPlus = styled.img`
   width: 1.5rem;
+`;
+
+export const EmptyDashboard = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  p {
+    font-weight: var(--font-weight-1);
+    color: var(--color-input-default);
+    text-align: center;
+  }
 `;
