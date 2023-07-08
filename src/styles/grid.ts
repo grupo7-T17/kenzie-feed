@@ -54,3 +54,11 @@ export const StyledContainerRegister = styled.main`
   max-width: 48rem;
   padding: 0rem 1.125rem 1rem;
 `;
+
+export const StyledloadWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh;
+    justify-content: center;
+`
