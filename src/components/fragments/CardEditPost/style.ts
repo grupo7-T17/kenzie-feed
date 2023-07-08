@@ -6,8 +6,10 @@ export const StyledLiCardEditPost = styled.li`
   justify-content: space-between;
   align-items: center;
   text-align: start;
-  gap: 1.875rem;
+  margin-right: 0.25rem;
+  gap: 0.875rem;
   width: 100%;
+  height: 150px;
 `;
 
 export const StyledEditImg = styled.img`

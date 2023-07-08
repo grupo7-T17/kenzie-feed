@@ -40,4 +40,15 @@ export const GlobalStyles = createGlobalStyle`
   --line-height-1: 20px;
   --line-height-0: 18px;
   }
+
+  ul::-webkit-scrollbar,
+  textarea::-webkit-scrollbar {
+    height: 0.625rem;
+    width: 0.625rem;
+  }
+  
+  ul::-webkit-scrollbar-thumb,
+  textarea::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+  }
 `;

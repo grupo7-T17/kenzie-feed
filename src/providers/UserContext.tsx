@@ -43,43 +43,16 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
       if (response.status === 201) {
         const data = response.data;
         setUserRegisterLogin([...userRegisterLogin, data.user]);
-        toast.success(`Cadastro bem sucedido!`, {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
+        toast.success(`Cadastro bem sucedido!`);
         setTimeout(() => {
           navigate('/login');
         }, 2000);
       } else {
-        toast.error(`Não foi possível fazer o cadastro`, {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
+        toast.error(`Não foi possível fazer o cadastro`);
       }
     } catch (error) {
       console.error(error);
-      toast.error(`Não foi possível fazer o cadastro`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.error(`Não foi possível fazer o cadastro`);
     }
   };
 
@@ -93,44 +66,17 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
 
         localStorage.setItem('@TOKEN', data.accessToken);
         localStorage.setItem('@USERID', data.user.id);
-        localStorage.setItem('@NAME', data.user.name); 
+        localStorage.setItem('@NAME', data.user.name);
         localStorage.setItem('@USERLOGGED', JSON.stringify(true));
 
-        toast.success(`Login bem sucedido!`, {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
+        toast.success(`Login bem sucedido!`);
         navigate('/dashboard');
       } else {
-        toast.error(`Falha ao fazer login`, {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
+        toast.error(`Falha ao fazer login`);
       }
     } catch (error) {
       console.error(error);
-      toast.error(`Usuário ou senha incorretos`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.error(`Usuário ou senha incorretos`);
     }
   };
 
@@ -149,7 +95,7 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
         registerUser,
         loginUser,
         userLogout,
-        navigate
+        navigate,
       }}
     >
       {children}
