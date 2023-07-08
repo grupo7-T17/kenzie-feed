@@ -38,11 +38,12 @@ export interface iNoticeContext {
   >;
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
-  getAllNoticies: () => Promise<void>;
   createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   deletePost: (id: number) => Promise<void>;
+  setDashboardList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
+  dashboardList: iPostsList[];
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -51,25 +52,33 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   // postCreateUpdate é o mesmo corpo de objeto tanto para criação de post quanto de atualização
   const [postCreateUpdate, setPostCreateUpdate] =
     useState<iPostRegisterUpdate | null>(null);
+  const [dashboardList, setDashboardList] = useState<iPostsList[]>([]);
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    const getAllNoticies = async () => {
+      try {
+        setLoading(true);
+        const { data } = await api.get('/posts?_embed=likes');
+        setPostsList(data);
+        const checkOwner = localStorage.getItem('@NAME');
+        const onlyUser = (postsList: iPostsList[]) => {
+          const filteredPosts = postsList.filter(
+            (post) => post.owner === checkOwner
+          );
+          setDashboardList(filteredPosts);
+        };
+        onlyUser(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
     getAllNoticies();
   }, [postCreateUpdate]);
-
-  const getAllNoticies = async () => {
-    try {
-      setLoading(true);
-      const { data } = await api.get('/posts?_embed=likes');
-      setPostsList(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const createNewNotice = async (formData: iPostRegisterUpdate) => {
     //Nesse caso tem o mesmo corpo do update, então reutilizei a interface
@@ -81,16 +90,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         },
       });
       setPostsList((postsList) => [...postsList, data]);
-      toast.success(`Criação bem sucedida!`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.success(`Criação bem sucedida!`);
     } catch (error) {
       console.error(error);
     }
@@ -105,10 +105,18 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      const getIdFromStorage = localStorage.getItem('@CARDID');
+      const userId = getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
+
+      setDashboardList((postData) =>
+        postData.filter((post) => post.id !== userId)
+      );
+
       toast.success(`Deletado com sucesso!`);
     } catch (error) {
       console.error(error);
-      toast.error(`Deletado com sucesso!`);
+      toast.error(`Ops! Não foi possivel deletar`);
     } finally {
       setLoading(false);
     }
@@ -123,11 +131,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         setPostCreateUpdate,
         like,
         setLike,
-        getAllNoticies,
         createNewNotice,
         loading,
         setLoading,
         deletePost,
+        setDashboardList,
+        dashboardList,
       }}
     >
       {children}

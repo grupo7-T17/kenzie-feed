@@ -7,19 +7,7 @@ import { AllNoticesPageContainer } from './style';
 import { NoticeContext } from '../../providers/NoticesContext';
 
 export const AllNoticesPage = () => {
-  const { getAllNoticies } = useContext(NoticeContext);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const loadAllNotices = async () => {
-      await getAllNoticies(setLoading);
-    };
-
-    loadAllNotices();
-    // if (!postsList) {
-    //   loadAllNotices()
-    // }
-  }, []);
+  const { getAllNoticies, loading } = useContext(NoticeContext);
 
   return (
     <StyledContainerMain>

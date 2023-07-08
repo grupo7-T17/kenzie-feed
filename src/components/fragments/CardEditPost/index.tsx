@@ -11,41 +11,31 @@ import Pen from '../../../assets/icons/pen.svg';
 import Bin from '../../../assets/icons/bin.svg';
 import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserContext';
+import { NoticeContext } from '../../../providers/NoticesContext';
 
 interface iCardPostProps {
   id: number;
-  key: number;
   img: string;
   title: string;
-  owner: string | null;
+  owner: string;
 }
 
-export const CardEditPost = ({
-  id,
-  key,
-  img,
-  title,
-  owner,
-}: iCardPostProps) => {
+export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
   const { navigate } = useContext(UserContext);
-
-  if (!owner) {
-    owner = null;
-  }
+  const { deletePost } = useContext(NoticeContext);
 
   const goToEditPage = () => {
     localStorage.setItem('@CARDINFO', JSON.stringify({ id: id, owner: owner }));
     navigate('/edit');
   };
 
-  // o delete envia as informaçoes necessarias para o local storage
-  const deletePost = () => {
-    localStorage.setItem('@CARDINFO', JSON.stringify({ id: id, owner: owner }));
-    // funçao de delete aqui
+  const deleteCard = (id: number) => {
+    localStorage.setItem('@CARDID', JSON.stringify(id));
+    deletePost(id);
   };
 
   return (
-    <StyledLiCardEditPost key={key}>
+    <StyledLiCardEditPost>
       <StyledDivLeft>
         <StyledContainerEditImg>
           <StyledEditImg src={img} alt='Imagem' />
@@ -56,7 +46,7 @@ export const CardEditPost = ({
         <button onClick={goToEditPage} type='button'>
           <StyledIcon src={Pen} />
         </button>
-        <button onClick={deletePost} type='button'>
+        <button onClick={() => deleteCard(id)} type='button'>
           <StyledIcon src={Bin} />
         </button>
       </StyledDivRight>

@@ -11,7 +11,6 @@ import { NoticeContext } from '../../../providers/NoticesContext';
 export const ListAllPosts = () => {
   const { postsList } = useContext(NoticeContext)
 
-
   return (
     <ListPostsHomepage>
       <HeaderPostsHomepage>

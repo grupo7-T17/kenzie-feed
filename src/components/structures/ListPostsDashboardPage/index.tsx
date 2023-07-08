@@ -1,11 +1,12 @@
 import { StyledButton } from '../../../styles/buttons';
-import { StyledTitleOne } from '../../../styles/typography';
+import { StyledParagraph, StyledTitleOne } from '../../../styles/typography';
 import { CardEditPost } from '../../fragments/CardEditPost';
 import {
   UlPostsHomepage,
   ListPostsDashboardContainer,
   StyledIconPlus,
   HeaderPostsDashboard,
+  EmptyDashboard,
 } from './style';
 import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
@@ -14,9 +15,7 @@ import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
-  const { postsList } = useContext(NoticeContext);
-
-  console.log(postsList);
+  const { dashboardList, loading } = useContext(NoticeContext);
 
   return (
     <ListPostsDashboardContainer>
@@ -33,17 +32,29 @@ export const ListPostsDashboard = () => {
           Novo Post
         </StyledButton>
       </HeaderPostsDashboard>
-      <UlPostsHomepage>
-        {postsList.map((post) => (
-          <CardEditPost
-            key={post.id}
-            id={post.id}
-            img={post.image}
-            title={post.title}
-            owner={post.owner}
-          />
-        ))}
-      </UlPostsHomepage>
+      {loading ? (
+        <EmptyDashboard>
+          <StyledParagraph fontStyle='lg'>Carregando...</StyledParagraph>
+        </EmptyDashboard>
+      ) : dashboardList.length > 0 ? (
+        <UlPostsHomepage>
+          {dashboardList.map((post) => (
+            <CardEditPost
+              key={post.id}
+              id={post.id}
+              img={post.image}
+              title={post.title}
+              owner={post.owner}
+            />
+          ))}
+        </UlPostsHomepage>
+      ) : (
+        <EmptyDashboard>
+          <StyledParagraph fontStyle='lg'>
+            Ops! Parece que não há nenhum post criado ainda
+          </StyledParagraph>
+        </EmptyDashboard>
+      )}
     </ListPostsDashboardContainer>
   );
 };
