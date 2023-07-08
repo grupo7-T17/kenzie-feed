@@ -40,6 +40,13 @@ export const StyledDivBottom = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 0.875rem;
+  width: 100%;
+
+  .noWrap{
+    white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  }
 `;
 
 export const StyledGapLink = styled.div`

@@ -15,6 +15,7 @@ import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
+
   const { dashboardList, loading } = useContext(NoticeContext);
 
   return (

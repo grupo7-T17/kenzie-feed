@@ -9,6 +9,7 @@ import {
 import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListAllPosts = () => {
+  
   const { postsList } = useContext(NoticeContext)
 
   return (
@@ -17,14 +18,19 @@ export const ListAllPosts = () => {
         <StyledTitleOne fontStyle='md'>Todas as Notícias</StyledTitleOne>
       </HeaderPostsHomepage>
       <UlPostsHomepage>
-        {postsList?.length >= 1 ? postsList.map(post => (
+        {postsList?.length >= 1 ? (
+          postsList.map((post) => (
             <CardPost
-            key={post.id}
-            img={post.image}
-            author={post.owner}
-            title={post.title}
-          />
-          )): null}
+              key={post.id}
+              img={post.image}
+              author={post.owner}
+              title={post.title}
+              postId={post.id}
+            />
+          ))
+        ) : (
+          <p>Nenhuma notícia encontrada.</p>
+        )}
       </UlPostsHomepage>
     </ListPostsHomepage>
   );

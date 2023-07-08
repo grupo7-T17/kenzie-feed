@@ -1,36 +1,65 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { StyledParagraph, StyledTitleFour } from '../../../styles/typography';
 import {
-  StyledParagraph,
-  StyledTitleFour,
-} from '../../../styles/typography';
-import { StyledImg, StyledLike, StyledDivCardPost, StyledFavoriteImage,StyledDivBottom } from './style';
-import Favorite from "../../../assets/icons/favorite.svg"
-import FavoriteChange from "../../../assets/icons/favoritechange.svg"
-
+  StyledImg,
+  StyledLike,
+  StyledDivCardPost,
+  StyledFavoriteImage,
+  StyledImgContainer
+} from './style';
+import Favorite from '../../../assets/icons/favorite.svg';
+import FavoriteChange from '../../../assets/icons/favoritechange.svg';
+import { NoticeContext } from '../../../providers/NoticesContext';
 
 interface ICardPostProps {
   img: string;
   author: string;
   title: string;
+  description: string;
+  postId: number;
+  likes: number;
 }
 
-export const PostInFocus = ({ img, author, title }: ICardPostProps) => {
-  const [likes, setLikes] = useState(0);
-  const [control, setControl] = useState(false);
+export const PostInFocus = ({
+  img,
+  author,
+  title,
+  description,
+  postId,
+  likes,
+}: ICardPostProps) => {
+  const { like, likePost, dislikePost } = useContext(NoticeContext);
+  const userId = localStorage.getItem('@USERID');
 
   const clickLike = () => {
-      setLikes(likes + 1);
-      setControl(true);
-   
+    if (!userId) {
+      window.location.href = '/login';
+      return;
+    }
+
+    if (like && like.postId === postId) {
+      dislikePost(postId);
+    } else {
+      likePost(postId);
+    }
   };
 
-  let Message;
-  if (likes === 0) {
-    Message = 'Seja o primeiro a curtir este post.';
+  const control = like && like.postId === postId;
+
+  let message;
+  if (!userId) {
+    message = (
+      <Link to='/login' style={{ color: 'inherit', textDecoration: 'none' }}>
+        Logue para curtir
+      </Link>
+    );
+  } else if (likes === 0) {
+    message = 'Seja o primeiro a curtir este post';
   } else if (likes === 1) {
-    Message = '1 curtida';
+    message = '1 curtida';
   } else {
-    Message = `${likes} curtidas`;
+    message = `${likes} curtidas`;
   }
 
   const clickImageChange = control ? FavoriteChange : Favorite;
@@ -39,15 +68,15 @@ export const PostInFocus = ({ img, author, title }: ICardPostProps) => {
     <StyledDivCardPost>
       <StyledParagraph fontStyle='sm'>Por: {author}</StyledParagraph>
       <StyledTitleFour fontStyle='sm'>{title}</StyledTitleFour>
-      <StyledImg src={img} alt='Imagem' />
+      <StyledImgContainer>
+        <StyledImg src={img} alt='Imagem' />
+      </StyledImgContainer>
       <StyledLike>
-        <button onClick={clickLike}>
-          <StyledFavoriteImage src={clickImageChange} />
-        </button>
-        <StyledParagraph fontStyle='sm'>{Message}</StyledParagraph>
+        <StyledFavoriteImage src={clickImageChange} onClick={clickLike} />
+        <StyledParagraph fontStyle='sm'>{message}</StyledParagraph>
       </StyledLike>
       <StyledParagraph fontStyle='lg' className='focusNoticeParagraph'>
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+        {description}
       </StyledParagraph>
     </StyledDivCardPost>
   );
