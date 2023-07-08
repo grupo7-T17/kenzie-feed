@@ -93,6 +93,16 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       toast.success(`Criação bem sucedida!`);
     } catch (error) {
       console.error(error);
+       toast.success(`Não foi possível criar.`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
     }
   };
 

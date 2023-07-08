@@ -4,15 +4,25 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { RoutesMain } from './routes/RoutesMain';
 import Modal from 'react-modal';
+import { useContext } from 'react';
+import { NoticeContext } from './providers/NoticesContext';
+import { StyledloadWrapper } from './styles/grid';
+import { ClockLoader } from 'react-spinners';
 
 Modal.setAppElement('#root');
 
+
+
 const App = () => {
+    const {loading} = useContext(NoticeContext)
   return (
     <>
-      <RoutesMain />
       <ResetCss />
       <GlobalStyles />
+      {loading ? 
+      <StyledloadWrapper>
+        <ClockLoader color="#36d7b7" />
+      </StyledloadWrapper> : <RoutesMain />}
       <ToastContainer />
     </>
   );
