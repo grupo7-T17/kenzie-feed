@@ -103,20 +103,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setPostsList((postsList) => [...postsList, data]);
+    
+      setDashboardList((postsList) => [...postsList, data]);
       toast.success(`Criação bem sucedida!`);
     } catch (error) {
       console.error(error);
-      toast.success(`Não foi possível criar.`, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.error(`Não foi possível criar.`);
     }
   };
 
