@@ -30,7 +30,7 @@ export const StyledModalContent = styled.div`
     height: 8.125rem;
   }
 
-  button:nth-child(3) {
+  form > button {
     margin-top: 0.625rem;
 
     > p {
@@ -38,7 +38,7 @@ export const StyledModalContent = styled.div`
     }
   }
 
-  button:nth-child(4) {
+  button:nth-child(3) {
     background-color: transparent;
     position: absolute;
     top: 1.25rem;
