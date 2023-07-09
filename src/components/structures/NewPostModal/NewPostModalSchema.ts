@@ -3,7 +3,7 @@ import { z } from "zod";
 
 
 const checkLink = (value: string) => {
-  const imageExtensions = ['.jpg', '.jpeg', '.png', '.svg'];
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.svg', '.webp'];
   return imageExtensions.some((extension) =>
     value.toLowerCase().includes(extension)
   );
