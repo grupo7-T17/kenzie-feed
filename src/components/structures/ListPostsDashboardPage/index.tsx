@@ -17,7 +17,12 @@ import { ScaleLoader } from 'react-spinners';
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
 
-  const { dashboardList, isDashboardLoading } = useContext(NoticeContext);
+  const { dashboardList, isDashboardLoading, onlyUser, postsList } =
+    useContext(NoticeContext);
+
+  useEffect(() => {
+    onlyUser(postsList);
+  }, []);
 
   return (
     <ListPostsDashboardContainer>
