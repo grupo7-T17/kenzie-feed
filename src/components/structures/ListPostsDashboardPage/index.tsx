@@ -10,13 +10,28 @@ import {
 } from './style';
 import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
 
-  const { dashboardList, loading } = useContext(NoticeContext);
+  const {
+    dashboardList,
+    loading,
+    setDashboardList,
+    postCreateUpdate,
+  } = useContext(NoticeContext);
+
+  useEffect(() => {
+    if (postCreateUpdate) {
+      setDashboardList((prevList) => [
+        { ...postCreateUpdate, id: Date.now(), likes: [] },
+        ...prevList
+      ]);
+    }
+  }, [postCreateUpdate, setDashboardList]);
+  
 
   return (
     <ListPostsDashboardContainer>
@@ -34,8 +49,7 @@ export const ListPostsDashboard = () => {
         </StyledButton>
       </HeaderPostsDashboard>
       {loading ? (
-        <EmptyDashboard>
-        </EmptyDashboard>
+        <EmptyDashboard></EmptyDashboard>
       ) : dashboardList.length > 0 ? (
         <UlPostsHomepage>
           {dashboardList.map((post) => (
@@ -51,7 +65,7 @@ export const ListPostsDashboard = () => {
       ) : (
         <EmptyDashboard>
           <StyledParagraph fontStyle='lg'>
-            Ops! Parece que não há nenhum post criado ainda
+            Ops! Parece que não há nenhum post criado ainda.
           </StyledParagraph>
         </EmptyDashboard>
       )}

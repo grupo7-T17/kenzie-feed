@@ -1,13 +1,9 @@
-import { StyledIconLetter } from "./style";
+import { StyledIconLetter } from './style';
 
 interface iIconUserProps {
   letter: string;
 }
 
 export const IconUser = ({ letter }: iIconUserProps) => {
-  return (
-    <StyledIconLetter>
-      {letter}
-    </StyledIconLetter>
-  );
+  return <StyledIconLetter>{letter}</StyledIconLetter>;
 };

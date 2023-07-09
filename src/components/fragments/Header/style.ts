@@ -18,7 +18,7 @@ export const StyledDivIconButton = styled.div`
   flex-direction: row;
   gap: 0.75rem;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     p {
       display: none;

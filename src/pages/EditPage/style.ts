@@ -1,4 +1,3 @@
-import { Footer } from './../../components/fragments/Footer/index';
 import styled from 'styled-components';
 
 export const StyledEditContainer = styled.div`

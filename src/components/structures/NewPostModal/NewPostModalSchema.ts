@@ -1,6 +1,4 @@
-import { z } from "zod";
-
-
+import { z } from 'zod';
 
 const checkLink = (value: string) => {
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.svg', '.webp'];

@@ -12,15 +12,18 @@ import { ScaleLoader } from 'react-spinners';
 Modal.setAppElement('#root');
 
 const App = () => {
-    const {loading} = useContext(NoticeContext)
+  const { loading } = useContext(NoticeContext);
   return (
     <>
       <ResetCss />
       <GlobalStyles />
-      {loading ? 
-      <StyledloadWrapper>
-        <ScaleLoader color="#808080" />
-      </StyledloadWrapper> : <RoutesMain />}
+      {loading ? (
+        <StyledloadWrapper>
+          <ScaleLoader color='#808080' />
+        </StyledloadWrapper>
+      ) : (
+        <RoutesMain />
+      )}
       <ToastContainer />
     </>
   );

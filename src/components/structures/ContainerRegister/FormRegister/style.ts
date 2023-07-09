@@ -29,7 +29,7 @@ export const StyledRegisterFormButton = styled.div`
   justify-content: flex-end;
   background-color: transparent;
   width: 100%;
-  max-width: 38.7rem;
+  max-width: 35rem;
 
   @media (max-width: 617px) {
     justify-content: center;

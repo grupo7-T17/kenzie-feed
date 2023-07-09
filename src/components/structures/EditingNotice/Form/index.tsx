@@ -10,8 +10,8 @@ import { NoticeContext } from '../../../../providers/NoticesContext';
 import { UserContext } from '../../../../providers/UserContext';
 
 export const EditingNoticeForm = () => {
-    const { navigate } = useContext(UserContext);
-    const {updateNotice} = useContext(NoticeContext)
+  const { navigate } = useContext(UserContext);
+  const { updateNotice } = useContext(NoticeContext);
 
   const {
     register,
@@ -21,20 +21,20 @@ export const EditingNoticeForm = () => {
     resolver: zodResolver(editingSchema),
   });
 
-    const submit: SubmitHandler<tEditingFormValues> = (formData) => {
-    const postId = localStorage.getItem('@CARDID')
+  const submit: SubmitHandler<tEditingFormValues> = (formData) => {
+    const postId = localStorage.getItem('@CARDID');
     const user = localStorage.getItem('@USERID');
-    const userId = Number (user)
-    const owner : string = localStorage.getItem('@NAME') as string
-    const newFormData = { 
-        userId:userId, 
-        owner:owner,
-        description :formData.description,
-        image:formData.image,
-        title:formData.title }
-        updateNotice (newFormData, Number(postId))
-        navigate('/dashboard');
-
+    const userId = Number(user);
+    const owner: string = localStorage.getItem('@NAME') as string;
+    const newFormData = {
+      userId: userId,
+      owner: owner,
+      description: formData.description,
+      image: formData.image,
+      title: formData.title,
+    };
+    updateNotice(newFormData, Number(postId));
+    navigate('/dashboard');
   };
 
   return (

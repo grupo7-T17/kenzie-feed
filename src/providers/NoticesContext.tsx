@@ -56,10 +56,13 @@ export interface iNoticeContext {
   postInFocus: iPostsList | null;
   setPostInFocus: React.Dispatch<React.SetStateAction<iPostsList | null>>;
   likePost: (postId: number) => Promise<void>;
-  dislikePost: (postId: number) => Promise<void>
+  dislikePost: (postId: number) => Promise<void>;
   setDashboardList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
   dashboardList: iPostsList[];
-  updateNotice: (formData: iPostRegisterUpdate, postID: number) => Promise<void>
+  updateNotice: (
+    formData: iPostRegisterUpdate,
+    postID: number
+  ) => Promise<void>;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -96,7 +99,6 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     getAllNoticies();
   }, [postCreateUpdate]);
 
-
   const updateNotice = async (formData: iPostRegisterUpdate, postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
@@ -105,12 +107,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setPostsList(data)
-      toast.success(`Notícia atualizada com sucesso!!`);
+  
+      setPostsList((prevPostsList) =>
+        prevPostsList.map((post) =>
+          post.id === postId ? { ...post, ...data } : post
+        )
+      );
+  
+      toast.success(`Post atualizado com sucesso`);
     } catch (error) {
       console.error(error);
-      toast.error(`Não foi possível atualizar a notícia.`, {
-      });
+      toast.error(`Não foi possível atualizar o post.`);
     }
   };
 
@@ -122,7 +129,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-    
+
       setDashboardList((postsList) => [...postsList, data]);
       toast.success(`Criação bem sucedida!`);
     } catch (error) {
@@ -142,16 +149,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       });
 
       const getIdFromStorage = localStorage.getItem('@CARDID');
-      const userId = getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
+      const userId =
+        getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
 
       setDashboardList((postData) =>
         postData.filter((post) => post.id !== userId)
       );
 
-      toast.success(`Deletado com sucesso!`);
+      toast.success(`Post deletado com sucesso!`);
     } catch (error) {
       console.error(error);
-      toast.error(`Ops! Não foi possivel deletar`);
+      toast.error(`Ops! Não foi possivel deletar o post`);
     } finally {
       setLoading(false);
     }
@@ -173,46 +181,67 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       const token = localStorage.getItem('@TOKEN');
       const userId = localStorage.getItem('@USERID');
       if (!token || !userId) {
-        toast.info('Logue para curtir');
+        toast.info('Faça login para curtir');
         return;
       }
-
+  
       const likeData: iLike = {
         userId: Number(userId),
         postId,
       };
-
+  
       await api.post('/likes', likeData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+  
       setLike(likeData);
+      setPostsList((prevPostsList) => {
+        return prevPostsList.map((post) => {
+          if (post.id === postId) {
+            return {
+              ...post,
+              likes: [...post.likes, likeData],
+            };
+          }
+          return post;
+        });
+      });
     } catch (error) {
       console.error(error);
       toast.error('Erro ao curtir o post.');
     }
   };
-
+  
   const dislikePost = async (postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
-
+      const userId = localStorage.getItem('@USERID');
+      
       await api.delete(`/likes/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      if (like?.postId === postId) {
-        setLike(null);
-      }
+  
+      setLike(null);
+      setPostsList((prevPostsList) => {
+        return prevPostsList.map((post) => {
+          if (post.id === postId) {
+            return {
+              ...post,
+              likes: post.likes.filter((like) => like.userId !== Number(userId)),
+            };
+          }
+          return post;
+        });
+      });
     } catch (error) {
       console.error(error);
-      toast.error('Erro ao descurtir o post.');
     }
   };
+  
 
   return (
     <NoticeContext.Provider

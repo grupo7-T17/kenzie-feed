@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FocusNoticePageContainer = styled.main`
   display: flex;
@@ -7,7 +7,7 @@ export const FocusNoticePageContainer = styled.main`
   align-items: center;
   width: 100%;
   gap: 1.25rem;
-  
+
   footer {
     position: static;
     left: none;

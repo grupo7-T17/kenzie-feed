@@ -26,7 +26,7 @@ export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
 
   const goToEditPage = () => {
     localStorage.setItem('@CARDINFO', JSON.stringify({ id: id, owner: owner }));
-    localStorage.setItem('@CARDID', JSON.stringify(id))
+    localStorage.setItem('@CARDID', JSON.stringify(id));
     navigate('/edit');
   };
 
@@ -44,7 +44,7 @@ export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
         <StyledTitleFour fontStyle='sm'>{title}</StyledTitleFour>
       </StyledDivLeft>
       <StyledDivRight>
-        <button onClick={goToEditPage} type='button' >
+        <button onClick={goToEditPage} type='button'>
           <StyledIcon src={Pen} />
         </button>
         <button onClick={() => deleteCard(id)} type='button'>

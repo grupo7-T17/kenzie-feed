@@ -1,4 +1,3 @@
-
 import Modal from 'react-modal';
 import closeModalIcon from '../../../../src/assets/icons/close-modal-icon.svg';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,21 +15,31 @@ import { NoticeContext } from '../../../providers/NoticesContext';
 export const NewPostModal = () => {
   const { modalNewPost, customModalStyles, handleCloseModal } =
     useContext(ModalContext);
-  const { createNewNotice} = useContext(NoticeContext);
- 
-  const { register,reset, handleSubmit, formState: { errors } } = useForm<tNewPostFormValues>({ resolver: zodResolver(newPostSchema) })
-  
+  const { createNewNotice } = useContext(NoticeContext);
+
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<tNewPostFormValues>({ resolver: zodResolver(newPostSchema) });
+
   const submit: SubmitHandler<tNewPostFormValues> = (dataForm) => {
-    reset ()
-   const getUser = localStorage.getItem('@USERID');
-    const userId = Number (getUser)
-   const owner : string = localStorage.getItem('@NAME') as string
-    const newFormData = { userId:userId, owner:owner ,description :dataForm.description,image:dataForm.image, title:dataForm.title }
-    createNewNotice (newFormData)
-    handleCloseModal()
-   
-  }
- 
+    reset();
+    const getUser = localStorage.getItem('@USERID');
+    const userId = Number(getUser);
+    const owner: string = localStorage.getItem('@NAME') as string;
+    const newFormData = {
+      userId: userId,
+      owner: owner,
+      description: dataForm.description,
+      image: dataForm.image,
+      title: dataForm.title,
+    };
+    createNewNotice(newFormData);
+    handleCloseModal();
+  };
+
   return (
     <>
       <Modal
@@ -63,9 +72,13 @@ export const NewPostModal = () => {
               errors={errors.description?.message}
             />
 
-          <StyledButton type='submit' buttonsize='md-min' buttontype='primary'>
-            <StyledParagraph fontStyle='sm'>Criar post</StyledParagraph>
-          </StyledButton>
+            <StyledButton
+              type='submit'
+              buttonsize='md-min'
+              buttontype='primary'
+            >
+              <StyledParagraph fontStyle='sm'>Criar post</StyledParagraph>
+            </StyledButton>
           </form>
 
           <button type='button' onClick={handleCloseModal}>
