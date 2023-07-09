@@ -12,11 +12,12 @@ import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
 import { useContext } from 'react';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { ScaleLoader } from 'react-spinners';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
 
-  const { dashboardList, loading } = useContext(NoticeContext);
+  const { dashboardList, isDashboardLoading } = useContext(NoticeContext);
 
   return (
     <ListPostsDashboardContainer>
@@ -33,8 +34,9 @@ export const ListPostsDashboard = () => {
           Novo Post
         </StyledButton>
       </HeaderPostsDashboard>
-      {loading ? (
+      {isDashboardLoading ? (
         <EmptyDashboard>
+          <ScaleLoader color='#808080' />
         </EmptyDashboard>
       ) : dashboardList.length > 0 ? (
         <UlPostsHomepage>

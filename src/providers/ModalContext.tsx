@@ -26,12 +26,16 @@ export interface iModalContext {
   handleOpenModal: () => void;
   handleCloseModal: () => void;
   customModalStyles: iModalConfiguration;
+  handleOpenDeleteModal: () => void;
+  handleCloseDeleteModal: () => void;
+  modalDelete: boolean;
 }
 
 export const ModalContext = createContext({} as iModalContext);
 
 export const ModalProvider = ({ children }: iProviderModalProps) => {
   const [modalNewPost, isModalNewPostOpen] = useState(false);
+  const [modalDelete, isModalDeleteOpen] = useState(false);
 
   const handleOpenModal = () => {
     isModalNewPostOpen(true);
@@ -39,6 +43,14 @@ export const ModalProvider = ({ children }: iProviderModalProps) => {
 
   const handleCloseModal = () => {
     isModalNewPostOpen(false);
+  };
+
+  const handleOpenDeleteModal = () => {
+    isModalDeleteOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    isModalDeleteOpen(false);
   };
 
   const customModalStyles = {
@@ -65,6 +77,9 @@ export const ModalProvider = ({ children }: iProviderModalProps) => {
         customModalStyles,
         handleOpenModal,
         handleCloseModal,
+        handleOpenDeleteModal,
+        handleCloseDeleteModal,
+        modalDelete,
       }}
     >
       {children}
