@@ -12,8 +12,6 @@ import { tNewPostFormValues, newPostSchema } from './NewPostModalSchema';
 import { StyledModalContent } from './style';
 import { NoticeContext } from '../../../providers/NoticesContext';
 
-
-
 export const NewPostModal = () => {
   const { modalNewPost, customModalStyles, handleCloseModal } =
     useContext(ModalContext);

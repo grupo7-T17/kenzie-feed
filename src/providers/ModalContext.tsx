@@ -45,12 +45,12 @@ export const ModalProvider = ({ children }: iProviderModalProps) => {
     content: {
       top: '50%',
       left: '50%',
-      right: '50%',
+      right: 'auto',
       bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
       marginRight: '-50%',
       border: '0rem',
       padding: '0rem 0.75rem',
-      transform: 'translate(-50%, -50%)',
       backgroundColor: 'transparent',
     },
     overlay: {
