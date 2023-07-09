@@ -12,6 +12,7 @@ import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
 import { useContext } from 'react';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { StyledloadWrapper } from '../../../styles/grid';
 import { ScaleLoader } from 'react-spinners';
 
 export const ListPostsDashboard = () => {
@@ -36,7 +37,9 @@ export const ListPostsDashboard = () => {
       </HeaderPostsDashboard>
       {loading ? (
         <EmptyDashboard>
-          <ScaleLoader color='#808080' />
+        <StyledloadWrapper>
+        <ScaleLoader color="#808080" />
+      </StyledloadWrapper>
         </EmptyDashboard>
       ) : dashboardList.length > 0 ? (
         <UlPostsHomepage>

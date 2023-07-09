@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import { useContext } from 'react';
 import { NoticeContext } from './providers/NoticesContext';
 import { StyledloadWrapper } from './styles/grid';
-import { ClockLoader } from 'react-spinners';
+import { ScaleLoader } from 'react-spinners';
 
 Modal.setAppElement('#root');
 
@@ -19,7 +19,7 @@ const App = () => {
       <GlobalStyles />
       {loading ? 
       <StyledloadWrapper>
-        <ClockLoader color="var(--color-primary)" />
+        <ScaleLoader color="#808080" />
       </StyledloadWrapper> : <RoutesMain />}
       <ToastContainer />
     </>
