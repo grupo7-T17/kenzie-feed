@@ -61,6 +61,7 @@ export interface iNoticeContext {
   ) => Promise<void>;
   isDashboardLoading: boolean;
   setDashboardLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  onlyUser: (postsList: iPostsList[]) => void;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -73,19 +74,18 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [isDashboardLoading, setDashboardLoading] = useState<boolean>(false);
   const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
 
+  const onlyUser = (postsList: iPostsList[]) => {
+    const checkOwner = localStorage.getItem('@NAME');
+    const filteredPosts = postsList.filter((post) => post.owner === checkOwner);
+    setDashboardList(filteredPosts);
+  };
+
   useEffect(() => {
     const getAllNoticies = async () => {
       try {
         setLoading(true);
         const { data } = await api.get('/posts?_embed=likes');
         setPostsList(data);
-        const checkOwner = localStorage.getItem('@NAME');
-        const onlyUser = (postsList: iPostsList[]) => {
-          const filteredPosts = postsList.filter(
-            (post) => post.owner === checkOwner
-          );
-          setDashboardList(filteredPosts);
-        };
         onlyUser(data);
       } catch (error) {
         console.error(error);
@@ -265,6 +265,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         updateNotice,
         isDashboardLoading,
         setDashboardLoading,
+        onlyUser,
       }}
     >
       {children}
