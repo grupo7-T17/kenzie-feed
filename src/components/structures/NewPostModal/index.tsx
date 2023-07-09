@@ -1,13 +1,17 @@
-import { useContext } from "react";
-import { ModalContext } from "../../../providers/ModalContext";
-import { StyledButton } from "../../../styles/buttons";
-import { StyledTitleTwo, StyledParagraph } from "../../../styles/typography";
-import { InputLabel } from "../../fragments/InputLabel";
-import { TextareaLabel } from "../../fragments/TextareaLabel";
-import { StyledModalContent } from "./style";
+
 import Modal from 'react-modal';
 import closeModalIcon from '../../../../src/assets/icons/close-modal-icon.svg';
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { ModalContext } from '../../../providers/ModalContext';
+import { StyledButton } from '../../../styles/buttons';
+import { StyledTitleTwo, StyledParagraph } from '../../../styles/typography';
+import { InputLabel } from '../../fragments/InputLabel';
+import { TextareaLabel } from '../../fragments/TextareaLabel';
+import { tNewPostFormValues, newPostSchema } from './NewPostModalSchema';
+import { StyledModalContent } from './style';
+import { NoticeContext } from '../../../providers/NoticesContext';
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { NoticeContext } from "../../../providers/NoticesContext";
@@ -16,6 +20,21 @@ import { creatingSchema, tCreatingFormValues } from "./CreatingSchema";
 export const NewPostModal = () => {
   const { modalNewPost, customModalStyles, handleCloseModal } =
     useContext(ModalContext);
+  const { createNewNotice } = useContext(NoticeContext);
+ 
+  const { register,reset, handleSubmit, formState: { errors } } = useForm<tNewPostFormValues>({ resolver: zodResolver(newPostSchema) })
+  
+  const submit: SubmitHandler<tNewPostFormValues> = (dataForm) => {
+    reset ()
+   const getUser = localStorage.getItem('@USERID');
+    const userId = Number (getUser)
+   const owner : string = localStorage.getItem('@NAME') as string
+    const newFormData = { userId:userId, owner:owner ,description :dataForm.description,image:dataForm.image, title:dataForm.title }
+    createNewNotice (newFormData)
+    handleCloseModal()
+   
+  }
+ 
 
     const { createNewNotice } = useContext(NoticeContext);
 
@@ -73,10 +92,12 @@ export const NewPostModal = () => {
               {...register('description')}
               errors={errors.description?.message}
             />
+
           <StyledButton type='submit' buttonsize='md-min' buttontype='primary'>
             <StyledParagraph fontStyle='sm'>Criar post</StyledParagraph>
           </StyledButton>
           </form>
+
           <button type='button' onClick={handleCloseModal}>
             <figure>
               <img
