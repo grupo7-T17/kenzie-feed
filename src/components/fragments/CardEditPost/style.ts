@@ -9,7 +9,8 @@ export const StyledLiCardEditPost = styled.li`
   margin-right: 0.25rem;
   gap: 0.875rem;
   width: 100%;
-  height: 150px;
+  min-height: 150px;
+  max-height: 250px;
 `;
 
 export const StyledEditImg = styled.img`

@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-import { ModalContext } from '../../../providers/ModalContext';
+import { useContext } from "react";
+import { ModalContext } from "../../../providers/ModalContext";
+import { StyledButton } from "../../../styles/buttons";
+import { StyledTitleTwo, StyledParagraph } from "../../../styles/typography";
+import { InputLabel } from "../../fragments/InputLabel";
+import { TextareaLabel } from "../../fragments/TextareaLabel";
+import { StyledModalContent } from "./style";
 import Modal from 'react-modal';
-import { StyledModalContent } from './style';
-import { StyledParagraph, StyledTitleTwo } from '../../../styles/typography';
-import { InputLabel } from '../../fragments/InputLabel';
-import { TextareaLabel } from '../../fragments/TextareaLabel';
-import { StyledButton } from '../../../styles/buttons';
 import closeModalIcon from '../../../../src/assets/icons/close-modal-icon.svg';
 
 export const NewPostModal = () => {
