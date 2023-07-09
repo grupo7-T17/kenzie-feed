@@ -42,10 +42,6 @@ export interface iPostResponse {
 export interface iNoticeContext {
   postsList: iPostsList[];
   setPostsList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
-  postCreateUpdate: iPostRegisterUpdate | null;
-  setPostCreateUpdate: React.Dispatch<
-    React.SetStateAction<iPostRegisterUpdate | null>
-  >;
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
   createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>;
@@ -68,8 +64,6 @@ export interface iNoticeContext {
 export const NoticeContext = createContext({} as iNoticeContext);
 
 export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
-  const [postCreateUpdate, setPostCreateUpdate] =
-    useState<iPostRegisterUpdate | null>(null);
   const [dashboardList, setDashboardList] = useState<iPostsList[]>([]);
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
@@ -97,9 +91,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       }
     };
     getAllNoticies();
-  }, [postCreateUpdate]);
+  }, []);
 
-  const updateNotice = async (formData: iPostRegisterUpdate, postId: number) => {
+  const updateNotice = async (
+    formData: iPostRegisterUpdate,
+    postId: number
+  ) => {
     try {
       const token = localStorage.getItem('@TOKEN');
       const { data } = await api.put(`/posts/${postId}`, formData, {
@@ -107,13 +104,13 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       setPostsList((prevPostsList) =>
         prevPostsList.map((post) =>
           post.id === postId ? { ...post, ...data } : post
         )
       );
-  
+
       toast.success(`Post atualizado com sucesso`);
     } catch (error) {
       console.error(error);
@@ -184,18 +181,18 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         toast.info('Faça login para curtir');
         return;
       }
-  
+
       const likeData: iLike = {
         userId: Number(userId),
         postId,
       };
-  
+
       await api.post('/likes', likeData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       setLike(likeData);
       setPostsList((prevPostsList) => {
         return prevPostsList.map((post) => {
@@ -213,25 +210,27 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       toast.error('Erro ao curtir o post.');
     }
   };
-  
+
   const dislikePost = async (postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
       const userId = localStorage.getItem('@USERID');
-      
+
       await api.delete(`/likes/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       setLike(null);
       setPostsList((prevPostsList) => {
         return prevPostsList.map((post) => {
           if (post.id === postId) {
             return {
               ...post,
-              likes: post.likes.filter((like) => like.userId !== Number(userId)),
+              likes: post.likes.filter(
+                (like) => like.userId !== Number(userId)
+              ),
             };
           }
           return post;
@@ -241,15 +240,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       console.error(error);
     }
   };
-  
 
   return (
     <NoticeContext.Provider
       value={{
         postsList,
         setPostsList,
-        postCreateUpdate,
-        setPostCreateUpdate,
         like,
         setLike,
         createNewNotice,

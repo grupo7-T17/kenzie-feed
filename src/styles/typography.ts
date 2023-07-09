@@ -111,7 +111,7 @@ export const StyledParagraph = styled.p`
 
 export const StyledLabel = styled.label`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-0);
