@@ -5,10 +5,20 @@ export const StyledModalContent = styled.div`
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
-  max-width: 50rem;
-  padding: 2.5rem 2.8125rem;
+  padding: 1.875rem 2.1875rem;
   background-color: var(--color-white);
   position: relative;
+
+  @media (min-width: 425px) {
+    width: 25rem;
+  }
+  @media (min-width: 768px) {
+    width: 43.75rem;
+  }
+
+  h2 {
+    font-size: clamp(var(--font-size-6), var(--font-size-8), 5.2vw);
+  }
 
   > form {
     display: flex;
@@ -17,7 +27,7 @@ export const StyledModalContent = styled.div`
   }
 
   textarea {
-    height: 14.375rem;
+    height: 8.125rem;
   }
 
   button:nth-child(3) {

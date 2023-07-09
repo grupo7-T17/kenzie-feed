@@ -19,6 +19,9 @@ interface iHeaderProps {
 export const Header = ({ buttonVisible = true }: iHeaderProps) => {
   const { userLogout } = useContext(UserContext);
   const userLogged = Boolean(localStorage.getItem('@USERLOGGED'));
+  const userName = localStorage.getItem('@NAME');
+  const firstLetter = userName ? userName.charAt(0).toUpperCase() : '';
+
   return (
     <StyledHeader>
       <StyledLink to='/'>
@@ -26,7 +29,7 @@ export const Header = ({ buttonVisible = true }: iHeaderProps) => {
       </StyledLink>
       {userLogged ? (
         <StyledDivIconButton>
-          <IconUser letter='A' />
+          <IconUser letter={firstLetter} />
           {buttonVisible ? (
             <StyledButtonLink
               to='/dashboard'
