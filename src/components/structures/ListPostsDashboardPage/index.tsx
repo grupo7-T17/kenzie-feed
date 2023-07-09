@@ -12,26 +12,12 @@ import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
 import { useContext, useEffect } from 'react';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { ScaleLoader } from 'react-spinners';
 
 export const ListPostsDashboard = () => {
   const { handleOpenModal } = useContext(ModalContext);
 
-  const {
-    dashboardList,
-    loading,
-    setDashboardList,
-    postCreateUpdate,
-  } = useContext(NoticeContext);
-
-  useEffect(() => {
-    if (postCreateUpdate) {
-      setDashboardList((prevList) => [
-        { ...postCreateUpdate, id: Date.now(), likes: [] },
-        ...prevList
-      ]);
-    }
-  }, [postCreateUpdate, setDashboardList]);
-  
+  const { dashboardList, isDashboardLoading } = useContext(NoticeContext);
 
   return (
     <ListPostsDashboardContainer>
@@ -48,8 +34,11 @@ export const ListPostsDashboard = () => {
           Novo Post
         </StyledButton>
       </HeaderPostsDashboard>
-      {loading ? (
-        <EmptyDashboard></EmptyDashboard>
+
+      {isDashboardLoading ? (
+        <EmptyDashboard>
+          <ScaleLoader color='#808080' />
+        </EmptyDashboard>
       ) : dashboardList.length > 0 ? (
         <UlPostsHomepage>
           {dashboardList.map((post) => (

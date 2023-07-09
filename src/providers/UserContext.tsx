@@ -86,6 +86,8 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
     localStorage.removeItem('@USER');
     localStorage.removeItem('@USERLOGGED');
     localStorage.removeItem('@NAME');
+    localStorage.removeItem('@CARDID');
+    localStorage.removeItem('@CARDINFO');
   };
 
   return (

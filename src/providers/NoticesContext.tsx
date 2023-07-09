@@ -59,6 +59,8 @@ export interface iNoticeContext {
     formData: iPostRegisterUpdate,
     postID: number
   ) => Promise<void>;
+  isDashboardLoading: boolean;
+  setDashboardLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -68,6 +70,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isDashboardLoading, setDashboardLoading] = useState<boolean>(false);
   const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
 
   useEffect(() => {
@@ -137,7 +140,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
 
   const deletePost = async (id: number) => {
     try {
-      setLoading(true);
+      setDashboardLoading(true);
       const token = localStorage.getItem('@TOKEN');
       await api.delete(`/posts/${id}`, {
         headers: {
@@ -158,7 +161,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       console.error(error);
       toast.error(`Ops! Não foi possivel deletar o post`);
     } finally {
-      setLoading(false);
+      setDashboardLoading(false);
     }
   };
 
@@ -260,6 +263,8 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         setDashboardList,
         dashboardList,
         updateNotice,
+        isDashboardLoading,
+        setDashboardLoading,
       }}
     >
       {children}
