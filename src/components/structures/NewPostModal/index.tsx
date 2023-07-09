@@ -12,15 +12,11 @@ import { TextareaLabel } from '../../fragments/TextareaLabel';
 import { tNewPostFormValues, newPostSchema } from './NewPostModalSchema';
 import { StyledModalContent } from './style';
 import { NoticeContext } from '../../../providers/NoticesContext';
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { NoticeContext } from "../../../providers/NoticesContext";
-import { creatingSchema, tCreatingFormValues } from "./CreatingSchema";
 
 export const NewPostModal = () => {
   const { modalNewPost, customModalStyles, handleCloseModal } =
     useContext(ModalContext);
-  const { createNewNotice } = useContext(NoticeContext);
+  const { createNewNotice} = useContext(NoticeContext);
  
   const { register,reset, handleSubmit, formState: { errors } } = useForm<tNewPostFormValues>({ resolver: zodResolver(newPostSchema) })
   
@@ -35,32 +31,6 @@ export const NewPostModal = () => {
    
   }
  
-
-    const { createNewNotice } = useContext(NoticeContext);
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<tCreatingFormValues>({
-        resolver: zodResolver(creatingSchema),
-      });
-    
-      const submit: SubmitHandler<tCreatingFormValues> = (formData) => {
-
-        const user = localStorage.getItem('@USERID');
-        const userId = Number (user)
-        const owner : string = localStorage.getItem('@NAME') as string
-        const newFormData = { 
-            userId:userId, owner:owner,
-            description :formData.description,
-            image:formData.image,
-            title:formData.title }
-         createNewNotice (newFormData)
-         handleCloseModal()
-      };
-    
-
   return (
     <>
       <Modal

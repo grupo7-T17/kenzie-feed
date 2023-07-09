@@ -18,6 +18,7 @@ export const StyledEditImg = styled.img`
   height: 100%;
   object-fit: contain;
   object-position: center;
+  border-radius: 1.5625rem;
 `;
 
 export const StyledContainerEditImg = styled.div`
