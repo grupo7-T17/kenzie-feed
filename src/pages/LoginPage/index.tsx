@@ -24,7 +24,7 @@ export const LoginPage = () => {
         </StyledContainerLoginImage>
         <StyledDivInputLogin>
           <StyledTitleOne fontStyle='md'>Acesse o KenzieFeed</StyledTitleOne>
-          <FormLogin/>
+          <FormLogin />
           <StyledParagraph fontStyle='sm'>Não é cadastrado?</StyledParagraph>
           <StyledLinkLoginPage to='/register'>Cadastre-se</StyledLinkLoginPage>
         </StyledDivInputLogin>

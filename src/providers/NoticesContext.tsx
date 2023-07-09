@@ -42,10 +42,6 @@ export interface iPostResponse {
 export interface iNoticeContext {
   postsList: iPostsList[];
   setPostsList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
-  postCreateUpdate: iPostRegisterUpdate | null;
-  setPostCreateUpdate: React.Dispatch<
-    React.SetStateAction<iPostRegisterUpdate | null>
-  >;
   like: iLike | null;
   setLike: React.Dispatch<React.SetStateAction<iLike | null>>;
   createNewNotice: (formData: iPostRegisterUpdate) => Promise<void>;
@@ -70,8 +66,6 @@ export interface iNoticeContext {
 export const NoticeContext = createContext({} as iNoticeContext);
 
 export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
-  const [postCreateUpdate, setPostCreateUpdate] =
-    useState<iPostRegisterUpdate | null>(null);
   const [dashboardList, setDashboardList] = useState<iPostsList[]>([]);
   const [postsList, setPostsList] = useState<iPostsList[]>([]);
   const [like, setLike] = useState<iLike | null>(null);
@@ -100,10 +94,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       }
     };
     getAllNoticies();
-  }, [postCreateUpdate]);
+  }, []);
 
-
-  const updateNotice = async (formData: iPostRegisterUpdate, postId: number) => {
+  const updateNotice = async (
+    formData: iPostRegisterUpdate,
+    postId: number
+  ) => {
     try {
       const token = localStorage.getItem('@TOKEN');
       const { data } = await api.put(`/posts/${postId}`, formData, {
@@ -111,12 +107,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setPostsList(data)
-      toast.success(`Notícia atualizada com sucesso!!`);
+
+      setPostsList((prevPostsList) =>
+        prevPostsList.map((post) =>
+          post.id === postId ? { ...post, ...data } : post
+        )
+      );
+
+      toast.success(`Post atualizado com sucesso`);
     } catch (error) {
       console.error(error);
-      toast.error(`Não foi possível atualizar a notícia.`, {
-      });
+      toast.error(`Não foi possível atualizar o post.`);
     }
   };
 
@@ -128,7 +129,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-    
+
       setDashboardList((postsList) => [...postsList, data]);
       toast.success(`Criação bem sucedida!`);
     } catch (error) {
@@ -148,16 +149,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       });
 
       const getIdFromStorage = localStorage.getItem('@CARDID');
-      const userId = getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
+      const userId =
+        getIdFromStorage !== null ? JSON.parse(getIdFromStorage) : null;
 
       setDashboardList((postData) =>
         postData.filter((post) => post.id !== userId)
       );
 
-      toast.success(`Deletado com sucesso!`);
+      toast.success(`Post deletado com sucesso!`);
     } catch (error) {
       console.error(error);
-      toast.error(`Ops! Não foi possivel deletar`);
+      toast.error(`Ops! Não foi possivel deletar o post`);
     } finally {
       setDashboardLoading(false);
     }
@@ -179,7 +181,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       const token = localStorage.getItem('@TOKEN');
       const userId = localStorage.getItem('@USERID');
       if (!token || !userId) {
-        toast.info('Logue para curtir');
+        toast.info('Faça login para curtir');
         return;
       }
 
@@ -195,6 +197,17 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       });
 
       setLike(likeData);
+      setPostsList((prevPostsList) => {
+        return prevPostsList.map((post) => {
+          if (post.id === postId) {
+            return {
+              ...post,
+              likes: [...post.likes, likeData],
+            };
+          }
+          return post;
+        });
+      });
     } catch (error) {
       console.error(error);
       toast.error('Erro ao curtir o post.');
@@ -204,6 +217,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const dislikePost = async (postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
+      const userId = localStorage.getItem('@USERID');
 
       await api.delete(`/likes/${postId}`, {
         headers: {
@@ -211,12 +225,22 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         },
       });
 
-      if (like?.postId === postId) {
-        setLike(null);
-      }
+      setLike(null);
+      setPostsList((prevPostsList) => {
+        return prevPostsList.map((post) => {
+          if (post.id === postId) {
+            return {
+              ...post,
+              likes: post.likes.filter(
+                (like) => like.userId !== Number(userId)
+              ),
+            };
+          }
+          return post;
+        });
+      });
     } catch (error) {
       console.error(error);
-      toast.error('Erro ao descurtir o post.');
     }
   };
 
@@ -225,8 +249,6 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       value={{
         postsList,
         setPostsList,
-        postCreateUpdate,
-        setPostCreateUpdate,
         like,
         setLike,
         createNewNotice,

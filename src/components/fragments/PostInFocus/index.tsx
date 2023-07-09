@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { StyledParagraph, StyledTitleFour } from '../../../styles/typography';
 import {
@@ -6,11 +6,12 @@ import {
   StyledLike,
   StyledDivCardPost,
   StyledFavoriteImage,
-  StyledImgContainer
+  StyledImgContainer,
 } from './style';
 import Favorite from '../../../assets/icons/favorite.svg';
 import FavoriteChange from '../../../assets/icons/favoritechange.svg';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { toast } from 'react-toastify';
 
 interface ICardPostProps {
   img: string;
@@ -29,23 +30,48 @@ export const PostInFocus = ({
   postId,
   likes,
 }: ICardPostProps) => {
-  const { like, likePost, dislikePost } = useContext(NoticeContext);
+  const { like, likePost, getPostById } = useContext(
+    NoticeContext
+  );
+  const [numLikes, setNumLikes] = useState(likes);
+  const [liked, setLiked] = useState<boolean>(false);
   const userId = localStorage.getItem('@USERID');
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const post = await getPostById(postId);
+      if (post) {
+        setLiked(Boolean(like && like.postId === postId));
+        setNumLikes(post.likes.length);
+      }
+    };
+
+    fetchPost();
+  }, [like, getPostById, postId]);
 
   const clickLike = () => {
     if (!userId) {
       window.location.href = '/login';
       return;
     }
-
-    if (like && like.postId === postId) {
-      dislikePost(postId);
-    } else {
-      likePost(postId);
+  
+    if (liked) {
+      toast.info('Você já curtiu este post.');
+      return;
     }
-  };
+  
+    likePost(postId);
+    setNumLikes((prevNumLikes) => prevNumLikes + 1);
+    setLiked(true);
+  }; 
 
-  const control = like && like.postId === postId;
+  useEffect(() => {
+    if (liked) {
+      setNumLikes((prevNumLikes) => prevNumLikes + 1);
+    }
+  }, [liked]);
+
+  const clickImageChange = liked ? FavoriteChange : Favorite;
 
   let message;
   if (!userId) {
@@ -54,15 +80,13 @@ export const PostInFocus = ({
         Logue para curtir
       </Link>
     );
-  } else if (likes === 0) {
+  } else if (numLikes === 0) {
     message = 'Seja o primeiro a curtir este post';
-  } else if (likes === 1) {
+  } else if (numLikes === 1) {
     message = '1 curtida';
   } else {
-    message = `${likes} curtidas`;
+    message = `${numLikes} curtidas`;
   }
-
-  const clickImageChange = control ? FavoriteChange : Favorite;
 
   return (
     <StyledDivCardPost>

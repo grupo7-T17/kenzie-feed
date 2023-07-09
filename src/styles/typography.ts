@@ -15,25 +15,41 @@ const defaultSettingsTitle = css`
       case 'lg':
         return css`
           font-size: clamp(var(--font-size-5), var(--font-size-10), 6vw);
-          line-height: clamp(var(--line-height-7), var(--line-height-12), 7.2vw);
+          line-height: clamp(
+            var(--line-height-7),
+            var(--line-height-12),
+            7.2vw
+          );
         `;
 
       case 'md':
         return css`
           font-size: clamp(var(--font-size-7), var(--font-size-9), 5.2vw);
-          line-height: clamp(var(--line-height-7), var(--line-height-11), 6.24vw);
+          line-height: clamp(
+            var(--line-height-7),
+            var(--line-height-11),
+            6.24vw
+          );
         `;
 
       case 'sm':
         return css`
           font-size: clamp(var(--font-size-4), var(--font-size-4), 2.6vw);
-          line-height: clamp(var(--line-height-4), var(--line-height-4), 3.12vw);
+          line-height: clamp(
+            var(--line-height-4),
+            var(--line-height-4),
+            3.12vw
+          );
         `;
 
       case 'post':
         return css`
           font-size: clamp(var(--font-size-3), var(--font-size-8), 4.2vw);
-          line-height: clamp(var(--line-height-4), var(--line-height-10), 5.04vw);
+          line-height: clamp(
+            var(--line-height-4),
+            var(--line-height-10),
+            5.04vw
+          );
         `;
     }
   }}
@@ -73,19 +89,30 @@ export const StyledParagraph = styled.p`
       case 'lg':
         return css`
           font-size: clamp(var(--font-size-1), var(--font-size-2), 2.6vw);
-          line-height: clamp(var(--line-height-0), var(--line-height-7), 3.12vw);
+          line-height: clamp(
+            var(--line-height-0),
+            var(--line-height-7),
+            3.12vw
+          );
         `;
 
       case 'sm':
         return css`
           font-size: clamp(var(--font-size-0), var(--font-size-1), 1.3vw);
-          line-height: clamp(var(--line-height-2), var(--line-height-0), 1.56vw);
+          line-height: clamp(
+            var(--line-height-2),
+            var(--line-height-0),
+            1.56vw
+          );
         `;
     }
   }}
 `;
 
 export const StyledLabel = styled.label`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-0);
   font-weight: var(--font-weight-1);
@@ -94,6 +121,9 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-0);

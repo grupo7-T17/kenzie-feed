@@ -10,7 +10,7 @@ import {
 } from './style';
 import Plus from '../../../assets/icons/circlewithplus.svg';
 import { ModalContext } from '../../../providers/ModalContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { NoticeContext } from '../../../providers/NoticesContext';
 import { ScaleLoader } from 'react-spinners';
 
@@ -34,6 +34,7 @@ export const ListPostsDashboard = () => {
           Novo Post
         </StyledButton>
       </HeaderPostsDashboard>
+
       {isDashboardLoading ? (
         <EmptyDashboard>
           <ScaleLoader color='#808080' />
@@ -53,7 +54,7 @@ export const ListPostsDashboard = () => {
       ) : (
         <EmptyDashboard>
           <StyledParagraph fontStyle='lg'>
-            Ops! Parece que não há nenhum post criado ainda
+            Ops! Parece que não há nenhum post criado ainda.
           </StyledParagraph>
         </EmptyDashboard>
       )}

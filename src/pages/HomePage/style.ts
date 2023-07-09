@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HomePageContainer = styled.main`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 3.4375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 3.4375rem;
 
-    footer {
-        position: static;
-        left: none;
-        bottom: none;
-    }
-`
+  footer {
+    position: static;
+    left: none;
+    bottom: none;
+  }
+`;

@@ -3,7 +3,11 @@ import {
   StyledParagraph,
   StyledTitleOne,
 } from '../../../styles/typography';
-import { StyledContainerImage, StyledWelcomeImage, WelcomeContainer } from './style';
+import {
+  StyledContainerImage,
+  StyledWelcomeImage,
+  WelcomeContainer,
+} from './style';
 import WelcomeCoffe from '../../../assets/imgs/welcome.svg';
 
 export const WelcomeStructure = () => {

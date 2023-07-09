@@ -1,18 +1,22 @@
-import { TextareaHTMLAttributes, forwardRef, ForwardedRef } from "react";
-import { StyledTextarea, iInputSize, iInputStyle } from "../../../styles/inputs";
-import { StyledLabel } from "../../../styles/typography";
-import { StyledTextareaLabelContainer } from "./style";
+import { TextareaHTMLAttributes, forwardRef, ForwardedRef } from 'react';
+import {
+  StyledTextarea,
+  iInputSize,
+  iInputStyle,
+} from '../../../styles/inputs';
+import { StyledLabel } from '../../../styles/typography';
+import { StyledTextareaLabelContainer } from './style';
 
 interface iTextareaLabel extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   inputSize: iInputSize['inputSize'];
   inputStyle: iInputStyle['inputStyle'];
-  errors?: string
+  errors?: string;
 }
 
 export const TextareaLabel = forwardRef(
   (
-    { label, errors , inputSize, inputStyle, ...rest }: iTextareaLabel,
+    { label, errors, inputSize, inputStyle, ...rest }: iTextareaLabel,
     ref: ForwardedRef<HTMLTextAreaElement>
   ) => {
     return (
@@ -24,7 +28,7 @@ export const TextareaLabel = forwardRef(
           ref={ref}
           {...rest}
         />
-        {errors ? <p>{errors}</p>:null}
+        {errors ? <p>{errors}</p> : null}
       </StyledTextareaLabelContainer>
     );
   }

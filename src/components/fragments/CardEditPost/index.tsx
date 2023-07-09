@@ -27,7 +27,7 @@ export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
 
   const goToEditPage = () => {
     localStorage.setItem('@CARDINFO', JSON.stringify({ id: id, owner: owner }));
-    localStorage.setItem('@CARDID', JSON.stringify(id))
+    localStorage.setItem('@CARDID', JSON.stringify(id));
     navigate('/edit');
   };
 

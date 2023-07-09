@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ListPostsHomepage = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.625rem;
   width: 100%;
   margin-top: 2.5rem;
 `;

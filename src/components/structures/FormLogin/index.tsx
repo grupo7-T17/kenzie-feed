@@ -9,18 +9,18 @@ import { UserContext } from '../../../providers/UserContext';
 import { useContext } from 'react';
 
 export const FormLogin = () => {
-    const { loginUser } = useContext(UserContext);
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<tLoginFormValues>({
-      resolver: zodResolver(loginSchema),
-    });
+  const { loginUser } = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<tLoginFormValues>({
+    resolver: zodResolver(loginSchema),
+  });
 
-    const submit: SubmitHandler<tLoginFormValues> = (formData) => {
-        loginUser(formData);
-    };
+  const submit: SubmitHandler<tLoginFormValues> = (formData) => {
+    loginUser(formData);
+  };
 
   return (
     <StyledFormLogin onSubmit={handleSubmit(submit)}>

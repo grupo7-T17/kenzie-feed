@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyledTitleOne } from '../../../styles/typography';
 import { CardPost } from '../../fragments/CardPost';
 import {
@@ -9,8 +9,12 @@ import {
 import { NoticeContext } from '../../../providers/NoticesContext';
 
 export const ListAllPosts = () => {
-  
-  const { postsList } = useContext(NoticeContext)
+  const { postsList } = useContext(NoticeContext);
+  const [allPosts, setAllPosts] = useState(postsList);
+
+  useEffect(() => {
+    setAllPosts(postsList);
+  }, [postsList]);
 
   return (
     <ListPostsHomepage>
@@ -18,8 +22,8 @@ export const ListAllPosts = () => {
         <StyledTitleOne fontStyle='md'>Todas as Notícias</StyledTitleOne>
       </HeaderPostsHomepage>
       <UlPostsHomepage>
-        {postsList?.length >= 1 ? (
-          postsList.map((post) => (
+        {allPosts?.length >= 1 ? (
+          allPosts.map((post) => (
             <CardPost
               key={post.id}
               img={post.image}

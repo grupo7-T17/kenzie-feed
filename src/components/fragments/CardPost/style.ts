@@ -42,10 +42,10 @@ export const StyledDivBottom = styled.div`
   gap: 0.875rem;
   width: 100%;
 
-  .noWrap{
+  .noWrap {
     white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
