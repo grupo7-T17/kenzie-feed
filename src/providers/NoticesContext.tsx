@@ -59,6 +59,7 @@ export interface iNoticeContext {
   dislikePost: (postId: number) => Promise<void>
   setDashboardList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
   dashboardList: iPostsList[];
+  updateNotice: (formData: iPostRegisterUpdate, postID: number) => Promise<void>
 }
 
 export const NoticeContext = createContext({} as iNoticeContext);
@@ -94,6 +95,24 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     };
     getAllNoticies();
   }, [postCreateUpdate]);
+
+
+  const updateNotice = async (formData: iPostRegisterUpdate, postId: number) => {
+    try {
+      const token = localStorage.getItem('@TOKEN');
+      const { data } = await api.put(`/posts/${postId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPostsList(data)
+      toast.success(`Notícia atualizada com sucesso!!`);
+    } catch (error) {
+      console.error(error);
+      toast.error(`Não foi possível atualizar a notícia.`, {
+      });
+    }
+  };
 
   const createNewNotice = async (formData: iPostRegisterUpdate) => {
     try {
@@ -215,6 +234,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         dislikePost,
         setDashboardList,
         dashboardList,
+        updateNotice,
       }}
     >
       {children}
