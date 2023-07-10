@@ -20,7 +20,7 @@ export const ListAllPosts = () => {
         setAllPosts(data);
       } catch (error) {
         console.error(error);
-      } 
+      }
     };
     updateAllPosts();
   }, []);

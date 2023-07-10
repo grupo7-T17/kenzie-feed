@@ -9,8 +9,8 @@ export const StyledLiCardEditPost = styled.li`
   margin-right: 0.25rem;
   gap: 0.875rem;
   width: 100%;
-  min-height: 150px;
-  max-height: 250px;
+  min-height: 9.375rem;
+  max-height: 15.625rem;
 `;
 
 export const StyledEditImg = styled.img`
@@ -31,7 +31,7 @@ export const StyledContainerEditImg = styled.div`
   overflow: hidden;
   border-radius: 1.5625rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: none;
   }
 `;

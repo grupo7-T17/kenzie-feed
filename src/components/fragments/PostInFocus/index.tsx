@@ -29,6 +29,7 @@ export const PostInFocus = ({
   postId,
   likes,
 }: ICardPostProps) => {
+
   const { like, likePost, getPostById, dislikePost } =
     useContext(NoticeContext);
   const [numLikes, setNumLikes] = useState(likes);

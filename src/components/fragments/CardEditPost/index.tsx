@@ -33,7 +33,7 @@ export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
 
   const deleteCard = () => {
     localStorage.setItem('@CARDID', JSON.stringify(id));
-    handleOpenDeleteModal()
+    handleOpenDeleteModal();
   };
 
   return (

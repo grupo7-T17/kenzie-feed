@@ -56,9 +56,9 @@ export const StyledContainerRegister = styled.main`
 `;
 
 export const StyledloadWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    height: 100vh;
-    justify-content: center;
-`
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  height: 100vh;
+  justify-content: center;
+`;
