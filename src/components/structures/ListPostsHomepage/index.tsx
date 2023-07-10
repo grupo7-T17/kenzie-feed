@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { StyledButtonLink } from '../../../styles/buttons';
 import { StyledTitleOne } from '../../../styles/typography';
 import { CardPost } from '../../fragments/CardPost';
@@ -8,9 +8,23 @@ import {
   HeaderPostsHomepage,
 } from './style';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { api } from '../../../services/api';
 
 export const ListPosts = () => {
-  const { postsList } = useContext(NoticeContext);
+  const { postsList, setPostsList } = useContext(NoticeContext);
+
+  useEffect(() => {
+    const updateAllPosts = async () => {
+      try {
+        const { data } = await api.get('/posts?_embed=likes');
+        setPostsList(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    updateAllPosts();
+  }, []);
+
   return (
     <ListPostsHomepage>
       <HeaderPostsHomepage>

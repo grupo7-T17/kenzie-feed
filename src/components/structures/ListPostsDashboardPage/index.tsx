@@ -50,6 +50,8 @@ export const ListPostsDashboard = () => {
             <CardEditPost
               key={post.id}
               id={post.id}
+              image={post.image}
+              description={post.description}
               img={post.image}
               title={post.title}
               owner={post.owner}

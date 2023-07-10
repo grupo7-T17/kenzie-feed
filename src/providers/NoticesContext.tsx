@@ -73,6 +73,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isDashboardLoading, setDashboardLoading] = useState<boolean>(false);
   const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
+  
   const onlyUser = (postsList: iPostsList[]) => {
     const checkOwner = localStorage.getItem('@NAME');
     const filteredPosts = postsList.filter((post) => post.owner === checkOwner);
@@ -107,7 +108,7 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         },
       });
 
-      setPostsList((prevPostsList) =>
+      setDashboardList((prevPostsList) =>
         prevPostsList.map((post) =>
           post.id === postId ? { ...post, ...data } : post
         )
