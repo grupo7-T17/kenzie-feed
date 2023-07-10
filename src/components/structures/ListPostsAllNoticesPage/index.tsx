@@ -7,14 +7,23 @@ import {
   HeaderPostsHomepage,
 } from './style';
 import { NoticeContext } from '../../../providers/NoticesContext';
+import { api } from '../../../services/api';
 
 export const ListAllPosts = () => {
   const { postsList } = useContext(NoticeContext);
   const [allPosts, setAllPosts] = useState(postsList);
 
   useEffect(() => {
-    setAllPosts(postsList);
-  }, [postsList]);
+    const updateAllPosts = async () => {
+      try {
+        const { data } = await api.get('/posts?_embed=likes');
+        setAllPosts(data);
+      } catch (error) {
+        console.error(error);
+      } 
+    };
+    updateAllPosts();
+  }, []);
 
   return (
     <ListPostsHomepage>
