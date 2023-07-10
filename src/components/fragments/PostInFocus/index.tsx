@@ -11,7 +11,6 @@ import {
 import Favorite from '../../../assets/icons/favorite.svg';
 import FavoriteChange from '../../../assets/icons/favoritechange.svg';
 import { NoticeContext } from '../../../providers/NoticesContext';
-import { toast } from 'react-toastify';
 
 interface ICardPostProps {
   img: string;
@@ -30,9 +29,8 @@ export const PostInFocus = ({
   postId,
   likes,
 }: ICardPostProps) => {
-  const { like, likePost, getPostById } = useContext(
-    NoticeContext
-  );
+  const { like, likePost, getPostById, dislikePost } =
+    useContext(NoticeContext);
   const [numLikes, setNumLikes] = useState(likes);
   const [liked, setLiked] = useState<boolean>(false);
   const userId = localStorage.getItem('@USERID');
@@ -45,7 +43,6 @@ export const PostInFocus = ({
         setNumLikes(post.likes.length);
       }
     };
-
     fetchPost();
   }, [like, getPostById, postId]);
 
@@ -54,16 +51,16 @@ export const PostInFocus = ({
       window.location.href = '/login';
       return;
     }
-  
+
     if (liked) {
-      toast.info('Você já curtiu este post.');
+      dislikePost();
       return;
     }
-  
+
     likePost(postId);
     setNumLikes((prevNumLikes) => prevNumLikes + 1);
     setLiked(true);
-  }; 
+  };
 
   useEffect(() => {
     if (liked) {

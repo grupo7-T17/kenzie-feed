@@ -52,7 +52,7 @@ export interface iNoticeContext {
   postInFocus: iPostsList | null;
   setPostInFocus: React.Dispatch<React.SetStateAction<iPostsList | null>>;
   likePost: (postId: number) => Promise<void>;
-  dislikePost: (postId: number) => Promise<void>;
+  dislikePost: () => Promise<void>;
   setDashboardList: React.Dispatch<React.SetStateAction<iPostsList[]>>;
   dashboardList: iPostsList[];
   updateNotice: (
@@ -189,12 +189,12 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
         postId,
       };
 
-      await api.post('/likes', likeData, {
+      const { data } = await api.post('/likes', likeData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      localStorage.setItem('@LIKEID', data.id);
       setLike(likeData);
     } catch (error) {
       console.error(error);
@@ -202,11 +202,11 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
     }
   };
 
-  const dislikePost = async (postId: number) => {
+  const dislikePost = async () => {
     try {
       const token = localStorage.getItem('@TOKEN');
-
-      await api.delete(`/likes/${postId}`, {
+      const id = localStorage.getItem('@LIKEID');
+      await api.delete(`/likes/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
