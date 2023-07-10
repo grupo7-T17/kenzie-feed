@@ -73,7 +73,6 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isDashboardLoading, setDashboardLoading] = useState<boolean>(false);
   const [postInFocus, setPostInFocus] = useState<iPostsList | null>(null);
-
   const onlyUser = (postsList: iPostsList[]) => {
     const checkOwner = localStorage.getItem('@NAME');
     const filteredPosts = postsList.filter((post) => post.owner === checkOwner);
@@ -197,17 +196,6 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
       });
 
       setLike(likeData);
-      setPostsList((prevPostsList) => {
-        return prevPostsList.map((post) => {
-          if (post.id === postId) {
-            return {
-              ...post,
-              likes: [...post.likes, likeData],
-            };
-          }
-          return post;
-        });
-      });
     } catch (error) {
       console.error(error);
       toast.error('Erro ao curtir o post.');
@@ -217,28 +205,13 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const dislikePost = async (postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
-      const userId = localStorage.getItem('@USERID');
 
       await api.delete(`/likes/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       setLike(null);
-      setPostsList((prevPostsList) => {
-        return prevPostsList.map((post) => {
-          if (post.id === postId) {
-            return {
-              ...post,
-              likes: post.likes.filter(
-                (like) => like.userId !== Number(userId)
-              ),
-            };
-          }
-          return post;
-        });
-      });
     } catch (error) {
       console.error(error);
     }
