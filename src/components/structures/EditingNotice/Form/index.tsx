@@ -72,7 +72,6 @@ export const EditingNoticeForm = () => {
         inputSize='md-max'
         inputStyle='borderless'
         placeholder='Cole um link de imagem'
-        value={getEditInfo?.image}
         {...register('image')}
         errors={errors.image?.message}
       />
@@ -81,7 +80,6 @@ export const EditingNoticeForm = () => {
         inputSize='md-max'
         inputStyle='borderless'
         placeholder='Escreva um conteúdo'
-        value={getEditInfo?.description}
         {...register('description')}
         errors={errors.description?.message}
       />
