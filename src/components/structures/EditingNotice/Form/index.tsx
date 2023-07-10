@@ -5,9 +5,15 @@ import { TextareaLabel } from '../../../fragments/TextareaLabel';
 import { StyledEditingFormContainer } from './style';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { editingSchema, tEditingFormValues } from './EditingSchema';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { NoticeContext } from '../../../../providers/NoticesContext';
 import { UserContext } from '../../../../providers/UserContext';
+
+interface iEditPost {
+  description: string;
+  image: string;
+  title: string;
+}
 
 export const EditingNoticeForm = () => {
   const { navigate } = useContext(UserContext);
@@ -17,9 +23,23 @@ export const EditingNoticeForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<tEditingFormValues>({
     resolver: zodResolver(editingSchema),
   });
+
+  const storedEditPost = localStorage.getItem('@POSTEDIT');
+  const getEditInfo = storedEditPost
+    ? (JSON.parse(storedEditPost) as iEditPost)
+    : null;
+
+    useEffect(() => {
+      if (getEditInfo) {
+        setValue('title', getEditInfo.title);
+        setValue('image', getEditInfo.image);
+        setValue('description', getEditInfo.description);
+      }
+    }, [getEditInfo, setValue]);
 
   const submit: SubmitHandler<tEditingFormValues> = (formData) => {
     const postId = localStorage.getItem('@CARDID');
@@ -52,6 +72,7 @@ export const EditingNoticeForm = () => {
         inputSize='md-max'
         inputStyle='borderless'
         placeholder='Cole um link de imagem'
+        value={getEditInfo?.image}
         {...register('image')}
         errors={errors.image?.message}
       />
@@ -60,6 +81,7 @@ export const EditingNoticeForm = () => {
         inputSize='md-max'
         inputStyle='borderless'
         placeholder='Escreva um conteúdo'
+        value={getEditInfo?.description}
         {...register('description')}
         errors={errors.description?.message}
       />

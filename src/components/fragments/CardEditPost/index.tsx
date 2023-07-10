@@ -17,17 +17,23 @@ import { DeletePostModal } from '../../structures/DeletingPostModal';
 interface iCardPostProps {
   id: number;
   img: string;
+  image: string;
+  description: string;
   title: string;
   owner: string;
 }
 
-export const CardEditPost = ({ id, img, title, owner }: iCardPostProps) => {
+export const CardEditPost = ({ id, img, title, image, description, owner }: iCardPostProps) => {
   const { navigate } = useContext(UserContext);
   const { handleOpenDeleteModal } = useContext(ModalContext);
 
   const goToEditPage = () => {
     localStorage.setItem('@CARDINFO', JSON.stringify({ id: id, owner: owner }));
     localStorage.setItem('@CARDID', JSON.stringify(id));
+    localStorage.setItem(
+      '@POSTEDIT',
+      JSON.stringify({ title: title, image: image, description: description })
+    );
     navigate('/edit');
   };
 
