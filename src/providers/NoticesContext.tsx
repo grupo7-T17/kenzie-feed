@@ -205,7 +205,6 @@ export const NoticesProvider = ({ children }: iProviderNoticeProps) => {
   const dislikePost = async (postId: number) => {
     try {
       const token = localStorage.getItem('@TOKEN');
-
       await api.delete(`/likes/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,

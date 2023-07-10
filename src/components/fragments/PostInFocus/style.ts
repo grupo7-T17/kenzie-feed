@@ -20,18 +20,18 @@ export const StyledDivCardPost = styled.div`
 export const StyledImgContainer = styled.div`
   display: flex;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  max-height: 400px;
+  max-height: 25rem;
   overflow: hidden;
 `;
 
 export const StyledImg = styled.img`
   width: 100%;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   object-fit: cover;
   height: 100%;
   min-height: 12.5rem;

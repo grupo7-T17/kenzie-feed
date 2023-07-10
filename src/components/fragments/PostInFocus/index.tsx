@@ -30,9 +30,7 @@ export const PostInFocus = ({
   postId,
   likes,
 }: ICardPostProps) => {
-  const { like, likePost, getPostById } = useContext(
-    NoticeContext
-  );
+  const { like, likePost, getPostById } = useContext(NoticeContext);
   const [numLikes, setNumLikes] = useState(likes);
   const [liked, setLiked] = useState<boolean>(false);
   const userId = localStorage.getItem('@USERID');
@@ -54,16 +52,16 @@ export const PostInFocus = ({
       window.location.href = '/login';
       return;
     }
-  
+
     if (liked) {
       toast.info('Você já curtiu este post.');
       return;
     }
-  
+
     likePost(postId);
     setNumLikes((prevNumLikes) => prevNumLikes + 1);
     setLiked(true);
-  }; 
+  };
 
   useEffect(() => {
     if (liked) {

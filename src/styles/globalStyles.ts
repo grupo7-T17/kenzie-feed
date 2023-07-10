@@ -14,31 +14,31 @@ export const GlobalStyles = createGlobalStyle`
   --font-weight-1: 700;
   --font-weight-0: 400;
 
-  --font-size-10: 50px;
-  --font-size-9: 42px;
-  --font-size-8: 34px;
-  --font-size-7: 32px;
-  --font-size-6: 28px;
-  --font-size-5: 26px;
-  --font-size-4: 22px;
-  --font-size-3: 18px;
-  --font-size-2: 16px;
-  --font-size-1: 14px;
-  --font-size-0: 12px;
+  --font-size-10: 3.125rem;
+  --font-size-9: 2.625rem;
+  --font-size-8: 2.125rem;
+  --font-size-7: 2rem;
+  --font-size-6: 1.75rem;
+  --font-size-5: 1.625rem;
+  --font-size-4: 1.375rem;
+  --font-size-3: 1.125rem;
+  --font-size-2: 1rem;
+  --font-size-1: 0.875rem;
+  --font-size-0: 0.75rem;
 
-  --line-height-12: 68px;
-  --line-height-11: 56px;
-  --line-height-10: 46px;
-  --line-height-9: 44px;
-  --line-height-8: 38px;
-  --line-height-7: 36px;
-  --line-height-6: 34px;
-  --line-height-5: 32px;
-  --line-height-4: 30px;
-  --line-height-3: 26px;
-  --line-height-2: 22px;
-  --line-height-1: 20px;
-  --line-height-0: 18px;
+  --line-height-12: 4.25rem;
+  --line-height-11: 3.5rem;
+  --line-height-10: 2.875rem;
+  --line-height-9: 2.75rem;
+  --line-height-8: 2.375rem;
+  --line-height-7: 2.25rem;
+  --line-height-6: 2.125rem;
+  --line-height-5: 2rem;
+  --line-height-4: 1.875rem;
+  --line-height-3: 1.625rem;
+  --line-height-2: 1.375rem;
+  --line-height-1: 1.25rem;
+  --line-height-0: 1.125rem;
   }
 
   ul::-webkit-scrollbar,
