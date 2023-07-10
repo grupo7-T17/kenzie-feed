@@ -6,7 +6,7 @@ import {
 } from './style';
 import { StyledButtonLink } from '../../../styles/buttons';
 import { IconUser } from '../IconUser';
-import Logo from '../../../assets/logo.svg';
+import Logo from '../../../assets/Logo.svg';
 import Quit from '../../../assets/icons/quit.svg';
 import { StyledLink } from '../../../styles/typography';
 import { UserContext } from '../../../providers/UserContext';
