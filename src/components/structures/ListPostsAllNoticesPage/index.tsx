@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { StyledTitleOne } from '../../../styles/typography';
+import { StyledParagraph, StyledTitleOne } from '../../../styles/typography';
 import { CardPost } from '../../fragments/CardPost';
 import {
   UlPostsHomepage,
@@ -42,7 +42,9 @@ export const ListAllPosts = () => {
             />
           ))
         ) : (
-          <p>Nenhuma notícia encontrada.</p>
+          <StyledParagraph fontStyle='lg' className='paragraphEmpty'>
+            Nenhuma notícia encontrada.
+          </StyledParagraph>
         )}
       </UlPostsHomepage>
     </ListPostsHomepage>
