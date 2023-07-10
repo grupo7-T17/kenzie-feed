@@ -2,7 +2,7 @@
 
 ### :date: Período do Projeto Módulo 3 - Semana 7
 ### :iphone: Mobile First = True
-#### :computer: Acesse o projeto em funcionamento [CLIQUE AQUI](httpswww.aindaestaemdesenvolvimentooprojetofinaldakenziefeed.com.br) 
+#### :computer: Acesse o projeto em funcionamento [CLIQUE AQUI](https://kenziefeed.vercel.app/) 
 
 ## 
 
@@ -31,7 +31,7 @@
 
 <ul>
 <li>Utilização de Props, Children e, em sua maioria, métodos imutáveis;</li>
-<li>Sobre o React uso de useState, useEffect, useRef, useForm e em conjunto com API;</li>
+<li>Sobre o React: uso de useState, useEffect, useRef, useForm e em conjunto com API;</li>
 <li>Conhecimento com bibliotecas e frameworks: react-hook-form, react-modal, react-responsive, react-router-dom, react-spinners, react-toastify, styled-components, axios e zod.</li>
 </ul>
 
