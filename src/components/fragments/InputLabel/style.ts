@@ -9,5 +9,6 @@ export const StyledInputLabelContainer = styled.fieldset`
     font-size: var(--font-size-0);
     font-weight: var(--font-weight-0);
     color: red;
+    align-self: flex-start;
   }
 `;

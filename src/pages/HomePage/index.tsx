@@ -10,15 +10,17 @@ import { NoticeContext } from '../../providers/NoticesContext';
 export const HomePage = () => {
   const { loading } = useContext(NoticeContext);
   return (
-    <StyledContainerMain>
-      <HomePageContainer>
-        <StyledContainerHeader>
-          <Header />
-        </StyledContainerHeader>
-        <WelcomeStructure />
-        {loading ? <p>Loading...</p> : <ListPosts />}
-        <Footer />
-      </HomePageContainer>
-    </StyledContainerMain>
+    <>
+      <StyledContainerHeader>
+        <Header />
+      </StyledContainerHeader>
+      <StyledContainerMain>
+        <HomePageContainer>
+          <WelcomeStructure />
+          {loading ? <p>Loading...</p> : <ListPosts />}
+          <Footer />
+        </HomePageContainer>
+      </StyledContainerMain>
+    </>
   );
 };

@@ -31,6 +31,7 @@ export const ResetCss = createGlobalStyle`
   }
   body {
     line-height: 1;
+    overflow: scroll;
   }
   ol, ul, li {
     list-style: none;

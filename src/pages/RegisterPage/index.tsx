@@ -7,15 +7,17 @@ import { StyledRegisterFooter } from './style';
 
 export const RegisterPage = () => {
   return (
-    <RegisterPageContainer>
+    <>
       <StyledContainerHeader>
         <Header />
       </StyledContainerHeader>
-      <ContainerRegister />
+      <RegisterPageContainer>
+        <ContainerRegister />
 
-      <StyledRegisterFooter>
-        <Footer />
-      </StyledRegisterFooter>
-    </RegisterPageContainer>
+        <StyledRegisterFooter>
+          <Footer />
+        </StyledRegisterFooter>
+      </RegisterPageContainer>
+    </>
   );
 };

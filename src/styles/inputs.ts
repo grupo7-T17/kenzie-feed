@@ -56,7 +56,7 @@ const InputSettings = css<iInputSize & iInputStyle>`
           font-size: var(--font-size-3);
           line-height: var(--line-height-3);
           width: 100%;
-          max-width: 57.5rem;
+          max-width: 64rem;
 
           &::placeholder {
             color: var(--color-input-default);
@@ -82,7 +82,7 @@ const InputSettings = css<iInputSize & iInputStyle>`
           font-size: var(--font-size-4);
           line-height: var(--line-height-3);
           width: 100%;
-          max-width: 57.5rem;
+          max-width: 64rem;
 
           &::placeholder {
             color: var(--color-input-default);

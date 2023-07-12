@@ -6,6 +6,7 @@ export const ListPostsDashboardContainer = styled.section`
   gap: 2.9375rem;
   width: 100%;
   max-width: 64rem;
+  padding: 0rem 1.125rem;
 `;
 
 export const HeaderPostsDashboard = styled.div`

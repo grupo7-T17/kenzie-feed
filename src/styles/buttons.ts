@@ -14,6 +14,7 @@ const ButtonDefault = css<iButtonType & iButtonSize>`
   font-weight: var(--font-weight-1);
   border-radius: 0.25rem;
   padding: 0 1rem;
+  white-space: nowrap;
 
   p {
     font-weight: var(--font-weight-1);
@@ -102,6 +103,7 @@ export const StyledButton = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 `;
 
 export const StyledButtonLink = styled(Link)`
@@ -110,4 +112,5 @@ export const StyledButtonLink = styled(Link)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 `;

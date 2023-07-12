@@ -17,7 +17,7 @@ export const StyledFormLogin = styled.form`
     width: 90%;
   }
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     width: 100%;
   }
 `;

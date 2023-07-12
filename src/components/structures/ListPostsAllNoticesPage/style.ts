@@ -33,7 +33,7 @@ export const HeaderPostsHomepage = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     button {
       display: none;
     }
