@@ -11,7 +11,6 @@ export const RegisterPageContainer = styled.main`
 
 export const StyledRegisterFooter = styled.div`
   padding-top: 11.875rem;
-
   @media (max-width: 768px) {
     padding-top: 1.5rem;
   }

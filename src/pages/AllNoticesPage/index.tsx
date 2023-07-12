@@ -10,14 +10,16 @@ export const AllNoticesPage = () => {
   const { loading } = useContext(NoticeContext);
 
   return (
-    <StyledContainerMain>
-      <AllNoticesPageContainer>
-        <StyledContainerHeader>
-          <Header />
-        </StyledContainerHeader>
-        {loading ? <p>Loading...</p> : <ListAllPosts />}
-        <Footer />
-      </AllNoticesPageContainer>
-    </StyledContainerMain>
+    <>
+      <StyledContainerHeader>
+        <Header />
+      </StyledContainerHeader>
+      <StyledContainerMain>
+        <AllNoticesPageContainer>
+          {loading ? <p>Loading...</p> : <ListAllPosts />}
+          <Footer />
+        </AllNoticesPageContainer>
+      </StyledContainerMain>
+    </>
   );
 };

@@ -9,10 +9,10 @@ import { StyledDashboardContainer, StyledFooterContainer } from './style';
 export const DashboardPage = () => {
   return (
     <>
-      <RegisterPageContainer>
-        <StyledContainerHeader>
+    <StyledContainerHeader>
           <Header buttonVisible={false} />
         </StyledContainerHeader>
+      <RegisterPageContainer>    
       </RegisterPageContainer>
       <StyledDashboardContainer>
         <ListPostsDashboard />

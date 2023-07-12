@@ -5,7 +5,7 @@ export const StyledEditingHeaderContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  max-width: 57.5rem;
+  max-width: 64rem;
 
   h1 {
     font-size: clamp(var(--font-size-4), 8vw, var(--font-size-8));

@@ -4,16 +4,16 @@ import { EditingNoticeForm } from '../../components/structures/EditingNotice/For
 import { EditingNoticeHeader } from '../../components/structures/EditingNotice/Header';
 import {
   StyledContainerEditMain,
-  StyledContainerEditHeader,
+  StyledContainerHeader,
 } from '../../styles/grid';
 import { StyledEditContainer, StyledFooterEdit } from './style';
 
 export const EditPage = () => {
   return (
     <>
-      <StyledContainerEditHeader>
+      <StyledContainerHeader>
         <Header />
-      </StyledContainerEditHeader>
+      </StyledContainerHeader>
       <StyledEditContainer>
         <StyledContainerEditMain>
           <EditingNoticeHeader />
