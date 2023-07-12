@@ -14,22 +14,26 @@ import { FormLogin } from '../../components/structures/FormLogin';
 
 export const LoginPage = () => {
   return (
-    <StyledContainerMain>
+    <>
       <StyledContainerHeader>
         <Header buttonVisible={false} />
       </StyledContainerHeader>
-      <StyledDivLoginPage>
-        <StyledContainerLoginImage>
-          <StyledLoginImage src={welcome} alt='Imagem de xícara e notebook' />
-        </StyledContainerLoginImage>
-        <StyledDivInputLogin>
-          <StyledTitleOne fontStyle='md'>Acesse o KenzieFeed</StyledTitleOne>
-          <FormLogin />
-          <StyledParagraph fontStyle='sm'>Não é cadastrado?</StyledParagraph>
-          <StyledLinkLoginPage to='/register'>Cadastre-se</StyledLinkLoginPage>
-        </StyledDivInputLogin>
-      </StyledDivLoginPage>
-      <Footer />
-    </StyledContainerMain>
+      <StyledContainerMain>
+        <StyledDivLoginPage>
+          <StyledContainerLoginImage>
+            <StyledLoginImage src={welcome} alt='Imagem de xícara e notebook' />
+          </StyledContainerLoginImage>
+          <StyledDivInputLogin>
+            <StyledTitleOne fontStyle='md'>Acesse o KenzieFeed</StyledTitleOne>
+            <FormLogin />
+            <StyledParagraph fontStyle='sm'>Não é cadastrado?</StyledParagraph>
+            <StyledLinkLoginPage to='/register'>
+              Cadastre-se
+            </StyledLinkLoginPage>
+          </StyledDivInputLogin>
+        </StyledDivLoginPage>
+        <Footer />
+      </StyledContainerMain>
+    </>
   );
 };

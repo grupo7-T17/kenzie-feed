@@ -5,7 +5,7 @@ export const StyledEditingFormContainer = styled.form`
   flex-direction: column;
   margin-bottom: 4.375rem;
   width: 100%;
-  max-width: 57.5rem;
+  max-width: 64rem;
   gap: 1.25rem;
 
   > button {

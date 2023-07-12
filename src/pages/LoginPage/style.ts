@@ -20,9 +20,12 @@ export const StyledDivInputLogin = styled.div`
   align-items: center;
   text-align: center;
 
+  @media (max-width: 768px) {
+    padding: 0rem 0rem;
+  }
+
   .width80 {
     width: 80%;
-
     @media (max-width: 768px) {
       width: 100%;
     }
@@ -46,7 +49,7 @@ export const StyledContainerLoginImage = styled.div`
   overflow: hidden;
   border-radius: 2.8125rem;
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;

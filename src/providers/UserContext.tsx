@@ -81,13 +81,15 @@ export const UserProvider = ({ children }: iProviderUserProps) => {
   };
 
   const userLogout = () => {
-    localStorage.removeItem('@TOKEN');
     localStorage.removeItem('@USERID');
+    localStorage.removeItem('@CARDID');
+    localStorage.removeItem('@TOKEN');
     localStorage.removeItem('@USER');
     localStorage.removeItem('@USERLOGGED');
     localStorage.removeItem('@NAME');
-    localStorage.removeItem('@CARDID');
     localStorage.removeItem('@CARDINFO');
+    localStorage.removeItem('@POSTEDIT');
+    localStorage.removeItem('@LIKEID');
   };
 
   return (

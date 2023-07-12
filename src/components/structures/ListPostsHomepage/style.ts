@@ -29,7 +29,7 @@ export const HeaderPostsHomepage = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     button {
       display: none;
     }

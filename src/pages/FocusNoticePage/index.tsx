@@ -41,11 +41,13 @@ export const FocusNoticePage = () => {
   }, [id, setPostInFocus]);
 
   return (
-    <StyledContainerMain>
-      <FocusNoticePageContainer>
-        <StyledContainerHeader>
+    <>
+    <StyledContainerHeader>
           <Header />
         </StyledContainerHeader>
+    <StyledContainerMain>
+        
+      <FocusNoticePageContainer>
         {post ? (
           <PostInFocus
             img={post.image}
@@ -62,5 +64,6 @@ export const FocusNoticePage = () => {
         <Footer />
       </FocusNoticePageContainer>
     </StyledContainerMain>
+    </>
   );
 };

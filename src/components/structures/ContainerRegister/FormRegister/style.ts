@@ -11,6 +11,8 @@ export const StyledFormRegister = styled.form`
 
   @media (max-width: 768px) {
     padding-top: 2.5rem;
+    text-align: center; 
+    max-width: 18.5rem;
   }
 `;
 

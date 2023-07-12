@@ -4,6 +4,11 @@ export const ListPostsHomepage = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  .paragraphEmpty {
+    margin-top: 3.125rem;
+    margin-bottom: 21.875rem;
+  }
 `;
 
 export const UlPostsHomepage = styled.ul`
@@ -28,7 +33,7 @@ export const HeaderPostsHomepage = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     button {
       display: none;
     }

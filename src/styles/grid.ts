@@ -4,7 +4,7 @@ export const StyledContainerHeader = styled.header`
   margin: auto;
   width: 100%;
   max-width: 64rem;
-  padding: 0.875rem 0rem;
+  padding: 0.875rem 1.125rem;
 `;
 
 export const StyledContainerMain = styled.main`
@@ -17,7 +17,7 @@ export const StyledContainerMain = styled.main`
 export const StyledContainerEditHeader = styled.header`
   margin: auto;
   width: 100%;
-  max-width: 57.5rem;
+  max-width: 64rem;
   padding: 0.875rem 1.25rem;
 `;
 
@@ -26,7 +26,7 @@ export const StyledContainerEditMain = styled.main`
   flex-direction: column;
   margin: 4.25rem auto 0rem;
   width: 100%;
-  max-width: 57.5rem;
+  max-width: 64rem;
   padding: 0rem 1.125rem 1rem;
   gap: 1.625rem;
 `;
@@ -44,7 +44,7 @@ export const StyledContainerDashboardMain = styled.main`
 export const StyledContainerLogin = styled.main`
   margin: 0 auto;
   width: 100%;
-  max-width: 71.25rem;
+  max-width: 64rem;
   padding: 0rem 1.125rem 1rem;
 `;
 

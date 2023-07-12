@@ -4,6 +4,7 @@ export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 0.375rem 0rem;
   width: 100%;
   max-width: 64rem;
@@ -11,6 +12,7 @@ export const StyledHeader = styled.header`
 
 export const StyledLogo = styled.img`
   width: 4.1875rem;
+  padding:.5rem 0;
 `;
 
 export const StyledDivIconButton = styled.div`
